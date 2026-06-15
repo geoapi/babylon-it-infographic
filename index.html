@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College of IT Infographic - University of Babylon</title>
+    <!-- Tailwind CSS for rich modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@0.400.0/dist/umd/lucide.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-200 overflow-x-hidden relative selection:bg-indigo-500/30 selection:text-white">
+
+    <!-- Interactive Canvas Particle Background -->
+    <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Global Header -->
+    <header class="relative z-10 p-6 md:p-10 text-center border-b border-slate-900/80 bg-slate-950/70 backdrop-blur-md">
+        <div class="flex justify-center mb-4">
+            <div class="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg shadow-indigo-500/30 animate-pulse">
+                <i data-lucide="server" class="w-10 h-10 text-white"></i>
+            </div>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">
+            College of <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Information Technology</span>
+        </h1>
+        <p class="text-slate-400 text-lg flex items-center justify-center gap-2">
+            <i data-lucide="map-pin" class="w-5 h-5 text-indigo-400"></i> University of Babylon, Iraq
+        </p>
+        
+        <!-- Global Highlight Badges -->
+        <div class="flex flex-wrap justify-center gap-3 mt-6">
+            <div class="px-4 py-2 bg-slate-900/90 border border-slate-850 rounded-full flex items-center gap-2 text-xs md:text-sm text-amber-400 shadow-sm">
+                <i data-lucide="award" class="w-4 h-4"></i> Bologna Process Standardized
+            </div>
+            <div class="px-4 py-2 bg-slate-900/90 border border-slate-850 rounded-full flex items-center gap-2 text-xs md:text-sm text-emerald-400 shadow-sm">
+                <i data-lucide="cpu" class="w-4 h-4"></i> Premier Tech Infrastructure
+            </div>
+            <div class="px-4 py-2 bg-slate-900/90 border border-slate-850 rounded-full flex items-center gap-2 text-xs md:text-sm text-blue-400 shadow-sm">
+                <i data-lucide="cloud" class="w-4 h-4"></i> Moodle & Smart Classrooms
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-7xl mx-auto p-4 md:p-8">
+        
+        <!-- Tab Helper -->
+        <p class="text-center text-xs uppercase tracking-widest text-indigo-400/80 mb-6 font-bold tracking-wider flex items-center justify-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
+            Select a Department Hub to explore details
+        </p>
+
+        <!-- Navigation Buttons -->
+        <div id="nav-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+            <!-- Dynamic Navigation injected via JS -->
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="content-container" class="bg-slate-900/40 border border-slate-850 rounded-3xl p-6 md:p-10 backdrop-blur-xl shadow-2xl transition-all duration-300">
+            <!-- Dynamic Content injected via JS -->
+        </div>
+    </main>
+
+    <footer class="relative z-10 text-center py-10 text-slate-600 text-xs border-t border-slate-900/60 mt-12 bg-slate-950/50">
+        Interactive Departmental Infographic Directory • University of Babylon • Created with Custom Engine
+    </footer>
+
+    <script>
+        // Data Configuration containing all structural details
+        const data = {
+            software: {
+                id: 'software', 
+                title: 'Software Dept.', 
+                tagline: 'Architecting the Digital Future',
+                color: 'from-blue-500 to-cyan-400', 
+                shadow: 'shadow-blue-500/25',
+                borderColor: 'border-blue-500/50',
+                glow: 'shadow-[0_0_25px_rgba(59,130,246,0.3)]',
+                icon: 'code-2',
+                degrees: ['B.Sc.', 'M.Sc.', 'Ph.D.'],
+                core: ['Artificial Intelligence', 'Deep Learning', 'System Automation', 'Medical Image Analysis', 'GIS Tooling'],
+                research: [
+                    { title: 'AI & Medical Imaging', desc: 'Siamese Networks, Cell Representations, and Visual Q&A systems.' },
+                    { title: 'Remote Sensing', desc: 'Satellite SAR Imagery classification & land cover ML mapping.' },
+                    { title: 'Device Automation', desc: 'Custom ecosystems & cross-platform portability tools.' }
+                ],
+                partners: ['🇬🇧 UON Twinning (2+2)', 'Huawei (Smart Uni)', 'Microsoft (Licensing)', 'Springer Academic', 'Al Isra & Kufa Uni'],
+                careers: ['Software Engineer', 'AI Specialist', 'Systems Analyst']
+            },
+            cyber: {
+                id: 'cyber', 
+                title: 'Cybersecurity Dept.', 
+                tagline: 'Defending the Digital Frontier',
+                color: 'from-red-500 to-orange-500', 
+                shadow: 'shadow-red-500/25', 
+                borderColor: 'border-red-500/50',
+                glow: 'shadow-[0_0_25px_rgba(239,68,68,0.3)]',
+                icon: 'shield-alert',
+                degrees: ['B.Sc.', 'M.Sc.'],
+                core: ['Threat Analysis', 'Secure Programming', 'Digital Forensics', 'Risk Management'],
+                research: [
+                    { title: 'Intrusion Detection', desc: 'Active network cyber-defense systems & behavioral analysis.' },
+                    { title: 'Next-Gen Networks', desc: 'Securing 5G/6G systems and complex IoT networks.' },
+                    { title: 'Post-Quantum Crypto', desc: 'Advanced cryptography, mathematical modeling, and privacy protection.' }
+                ],
+                partners: ['Industry Standard Alliances', 'Global Security Coalitions'],
+                careers: ['Cybersecurity Analyst', 'Network Security Engineer', 'Digital Forensics Specialist']
+            },
+            network: {
+                id: 'network', 
+                title: 'Information Networks', 
+                tagline: 'Connecting Global Systems',
+                color: 'from-purple-500 to-pink-500', 
+                shadow: 'shadow-purple-500/25', 
+                borderColor: 'border-purple-500/50',
+                glow: 'shadow-[0_0_25px_rgba(168,85,247,0.3)]',
+                icon: 'network',
+                degrees: ['B.Sc.', 'M.Sc.', 'Ph.D.'],
+                core: ['Network Management', 'Cloud Computing', 'SDN', 'Web Programming', 'Network Security'],
+                research: [
+                    { title: 'WSN & VANETs', desc: 'Clustering algorithms, coverage area modeling, and intelligent transport.' },
+                    { title: 'Cybersecurity & Network Threats', desc: 'Detecting DNS tunneling, intrusion mitigation, and managing selfish nodes in MANETs.' },
+                    { title: 'Complex Networks', desc: 'Community structure tracking via Leiden/Louvain algorithms.' },
+                    { title: 'AI for Sustainability', desc: 'Using AI to optimize resources, lower emissions, and preserve environments.' }
+                ],
+                partners: ['🇬🇧 UON Twinning (2+2)', 'Huawei', 'Springer Academic', 'British Council'],
+                careers: ['Network & Web Engineer', 'Network Architect', 'Cloud Infrastructure Eng.', 'SNA Data Scientist']
+            },
+            ai: {
+                id: 'ai', 
+                title: 'Artificial Intelligence', 
+                tagline: 'Pioneering Cognitive Systems',
+                color: 'from-emerald-500 to-teal-400', 
+                shadow: 'shadow-emerald-500/25', 
+                borderColor: 'border-emerald-500/50',
+                glow: 'shadow-[0_0_25px_rgba(16,185,129,0.3)]',
+                icon: 'brain-circuit',
+                degrees: ['B.Sc.', 'M.Sc.', 'Ph.D.'],
+                core: ['Machine Learning', 'Computer Vision', 'Natural Language Processing', 'Autonomous Systems', 'Generative AI'],
+                research: [
+                    { title: 'Cognitive Computing', desc: 'Simulating human brain thought patterns to solve complex regional problems.' },
+                    { title: 'Vision & Robotics', desc: 'Real-time object mapping, self-driving intelligence, and spatial awareness.' },
+                    { title: 'Predictive Modeling', desc: 'Advanced predictive algorithms for climate systems and medical healthcare.' }
+                ],
+                partners: ['Global AI Research Labs', 'Huawei AI Academy', 'Regional Tech Hubs'],
+                careers: ['Machine Learning Engineer', 'AI Research Scientist', 'Computer Vision Specialist']
+            }
+        };
+
+        // Default Active Tab
+        let activeDept = data.software;
+
+        // Render functions with error boundaries for safety
+        function renderApp() {
+            try {
+                renderNav();
+                renderContent();
+                
+                // Safe check for Lucide icons rendering
+                if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                    lucide.createIcons();
+                }
+            } catch (err) {
+                console.error("Rendering Error: ", err);
+            }
+        }
+
+        function renderNav() {
+            const navContainer = document.getElementById('nav-container');
+            if (!navContainer) return;
+
+            navContainer.innerHTML = Object.values(data).map(dept => {
+                const isActive = activeDept.id === dept.id;
+                
+                // Active, hover, and press state parameters
+                const stateClasses = isActive 
+                    ? `${dept.borderColor} bg-slate-900/90 scale-[1.03] -translate-y-1 ${dept.glow} ring-2 ring-indigo-500/10` 
+                    : `border-slate-850 bg-slate-900/30 hover:bg-slate-900/60 hover:-translate-y-1 hover:scale-[1.02] hover:border-slate-700/80 hover:shadow-lg active:scale-95`;
+                
+                return `
+                    <button onclick="setActive('${dept.id}')" 
+                            class="relative group p-5 rounded-2xl transition-all duration-300 text-left border backdrop-blur-sm cursor-pointer select-none ${stateClasses}">
+                        
+                        <!-- Glow highlight backdrop for hover/active transitions -->
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-[0.04] bg-gradient-to-br ${dept.color} transition-opacity duration-300 rounded-2xl"></div>
+                        
+                        <!-- Top status light bar -->
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${dept.color} rounded-t-2xl transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}"></div>
+                        
+                        <div class="flex items-center justify-between gap-3 relative z-10">
+                            <div class="flex items-center gap-4 min-w-0">
+                                <!-- Animated Icon Container -->
+                                <div class="p-3.5 rounded-xl bg-gradient-to-br ${dept.color} ${dept.shadow} group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                                    <i data-lucide="${dept.icon}" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <h2 class="text-md md:text-lg font-bold text-white tracking-tight leading-tight group-hover:text-indigo-200 transition-colors">${dept.title}</h2>
+                                    <p class="text-xs text-slate-400 group-hover:text-slate-300 transition-colors truncate mt-0.5">${dept.tagline}</p>
+                                </div>
+                            </div>
+
+                            <!-- Right-side tactical feedback icon -->
+                            <div class="flex items-center justify-center">
+                                ${isActive 
+                                    ? `<div class="w-2.5 h-2.5 rounded-full bg-gradient-to-r ${dept.color} animate-ping"></div>`
+                                    : `<i data-lucide="chevron-right" class="w-5 h-5 text-slate-600 opacity-0 group-hover:opacity-100 translate-x-[-4px] group-hover:translate-x-0 transition-all duration-300"></i>`
+                                }
+                            </div>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function renderContent() {
+            const container = document.getElementById('content-container');
+            if (!container) return;
+
+            const d = activeDept;
+            const accentColorClass = `text-indigo-400`; // Universal clean aesthetic color
+
+            container.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 fade-in">
+                    
+                    <!-- Academics Section -->
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold mb-4 text-white border-b border-slate-800/80 pb-2.5">
+                                <i data-lucide="graduation-cap" class="${accentColorClass} w-5 h-5"></i>
+                                Academic Excellence
+                            </h3>
+                            <div class="flex flex-wrap gap-2.5 mb-6">
+                                ${d.degrees.map(deg => `<span class="px-3 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-xs font-semibold tracking-wide">${deg}</span>`).join('')}
+                            </div>
+                            
+                            <h4 class="text-xs text-slate-500 uppercase tracking-wider mb-3 font-semibold">Core Specializations</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${d.core.map(skill => `<span class="px-3 py-1.5 bg-slate-900/60 rounded-lg text-xs text-slate-300 border border-slate-800/80 hover:border-slate-700 transition-colors">${skill}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Research Hubs -->
+                    <div class="space-y-5 lg:border-l lg:border-r border-slate-900 lg:px-8">
+                        <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold mb-4 text-white border-b border-slate-800/80 pb-2.5">
+                            <i data-lucide="microscope" class="${accentColorClass} w-5 h-5"></i>
+                            Active Research Hubs
+                        </h3>
+                        
+                        <div class="grid gap-3.5">
+                            ${d.research.map(res => `
+                                <div class="relative p-4 bg-slate-950/40 rounded-xl border border-slate-900/80 group hover:border-slate-800 transition-colors">
+                                    <div class="absolute left-0 top-0 w-1 h-full rounded-l-xl bg-gradient-to-b ${d.color} opacity-40 group-hover:opacity-100 transition-opacity"></div>
+                                    <h4 class="text-white text-sm font-bold mb-1 flex items-center gap-2">
+                                        <i data-lucide="zap" class="w-3.5 h-3.5 text-slate-500"></i> ${res.title}
+                                    </h4>
+                                    <p class="text-xs text-slate-400 pl-5 leading-relaxed">${res.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Career Ecosystem & Partnerships -->
+                    <div class="space-y-6">
+                        ${(d.id === 'network' || d.id === 'software') ? `
+                            <div class="p-4 rounded-xl bg-gradient-to-br from-purple-950/20 to-indigo-950/20 border border-purple-500/20 mb-4">
+                                <h4 class="text-purple-300 text-sm font-bold mb-1 flex items-center gap-2">
+                                    <i data-lucide="globe" class="w-4 h-4"></i> UK Twinning Program
+                                </h4>
+                                <p class="text-xs text-purple-200/75 leading-relaxed">Exclusive <strong>"2+2"</strong> model franchise agreement with the University of Northampton.</p>
+                            </div>
+                        ` : ''}
+
+                        <div>
+                            <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold mb-4 text-white border-b border-slate-800/80 pb-2.5">
+                                <i data-lucide="briefcase" class="${accentColorClass} w-5 h-5"></i>
+                                Career Ecosystem
+                            </h3>
+                            
+                            <h4 class="text-xs text-slate-500 uppercase tracking-wider mb-3 font-semibold">Global Alliances</h4>
+                            <ul class="space-y-2 mb-6">
+                                ${d.partners.map(partner => `
+                                    <li class="flex items-center gap-2.5 text-xs text-slate-300">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-indigo-400"></div>
+                                        ${partner}
+                                    </li>
+                                `).join('')}
+                            </ul>
+
+                            <h4 class="text-xs text-slate-500 uppercase tracking-wider mb-3 font-semibold">Target Careers</h4>
+                            <div class="flex flex-col gap-2">
+                                ${d.careers.map(career => `
+                                    <div class="px-4 py-2.5 bg-slate-950/30 rounded-xl border border-slate-900 flex items-center justify-between hover:border-slate-800 transition-colors">
+                                        <span class="text-xs font-semibold text-slate-200">${career}</span>
+                                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-indigo-500/80"></i>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Global state handler
+        window.setActive = function(deptId) {
+            activeDept = data[deptId];
+            renderApp();
+        };
+
+        // Canvas Particle Network Background
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
+                    radius: Math.random() * 1.5 + 0.5
+                });
+            }
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(p => {
+                p.x += p.vx; 
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(148, 163, 184, 0.2)';
+                ctx.fill();
+            });
+
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 - distance/1500})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateCanvas);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        
+        // Document Ready Entrypoint
+        document.addEventListener("DOMContentLoaded", () => {
+            initCanvas();
+            animateCanvas();
+            renderApp();
+        });
+
+        // Fail-safe initialization fallback
+        setTimeout(renderApp, 200);
+    </script>
+</body>
+</html>
