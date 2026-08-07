@@ -22,6 +22,37 @@
     <!-- Interactive Canvas Particle Background -->
     <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
+    <!-- Top Navigation Menu -->
+    <nav class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-850/80 px-6 md:px-10 py-3.5 shadow-lg">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand / Logo Link -->
+            <a href="https://itbabylon.org" class="flex items-center gap-2.5 group">
+                <div class="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 group-hover:bg-indigo-500/20 transition-all duration-300">
+                    <i data-lucide="globe" class="w-5 h-5 text-indigo-400"></i>
+                </div>
+                <span class="font-bold text-sm md:text-base tracking-tight text-slate-100 group-hover:text-indigo-300 transition-colors">
+                    IT Babylon <span class="text-xs text-indigo-400 font-normal">Portal</span>
+                </span>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="flex items-center gap-1 sm:gap-3">
+                <a href="https://itbabylon.org" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-900/80 border border-transparent hover:border-slate-800 transition-all duration-200">
+                    <i data-lucide="home" class="w-4 h-4 text-indigo-400"></i>
+                    <span>Home</span>
+                </a>
+                <a href="https://moodle.itbabylon.org" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-900/80 border border-transparent hover:border-slate-800 transition-all duration-200">
+                    <i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-400"></i>
+                    <span>Moodle</span>
+                </a>
+                <a href="https://booking.itbabylon.org" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-900/80 border border-transparent hover:border-slate-800 transition-all duration-200">
+                    <i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i>
+                    <span>Booking</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Global Header -->
     <header class="relative z-10 p-6 md:p-10 text-center border-b border-slate-900/80 bg-slate-950/70 backdrop-blur-md">
         
@@ -71,7 +102,7 @@
     <main class="relative z-10 max-w-7xl mx-auto p-4 md:p-8">
         
         <!-- Tab Helper -->
-        <p class="text-center text-xs uppercase tracking-widest text-indigo-400/80 mb-6 font-bold tracking-wider flex items-center justify-center gap-2">
+        <p class="text-center text-xs uppercase text-indigo-400/80 mb-6 font-bold tracking-wider flex items-center justify-center gap-2">
             <span class="inline-block w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
             Select a Department Hub to explore details
         </p>
@@ -173,7 +204,7 @@
             }
         };
 
-        // Default Active Tab (Now points to network to match ordering)
+        // Default Active Tab
         let activeDept = data.network;
 
         // Render functions with error boundaries for safety
@@ -198,7 +229,6 @@
             navContainer.innerHTML = Object.values(data).map(dept => {
                 const isActive = activeDept.id === dept.id;
                 
-                // Active, hover, and press state parameters
                 const stateClasses = isActive 
                     ? `${dept.borderColor} bg-slate-900/90 scale-[1.03] -translate-y-1 ${dept.glow} ring-2 ring-indigo-500/10` 
                     : `border-slate-850 bg-slate-900/30 hover:bg-slate-900/60 hover:-translate-y-1 hover:scale-[1.02] hover:border-slate-700/80 hover:shadow-lg active:scale-95`;
@@ -207,15 +237,12 @@
                     <button onclick="setActive('${dept.id}')" 
                             class="relative group p-5 rounded-2xl transition-all duration-300 text-left border backdrop-blur-sm cursor-pointer select-none ${stateClasses}">
                         
-                        <!-- Glow highlight backdrop for hover/active transitions -->
                         <div class="absolute inset-0 opacity-0 group-hover:opacity-[0.04] bg-gradient-to-br ${dept.color} transition-opacity duration-300 rounded-2xl"></div>
                         
-                        <!-- Top status light bar -->
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${dept.color} rounded-t-2xl transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}"></div>
                         
                         <div class="flex items-center justify-between gap-3 relative z-10">
                             <div class="flex items-center gap-4 min-w-0">
-                                <!-- Animated Icon Container -->
                                 <div class="p-3.5 rounded-xl bg-gradient-to-br ${dept.color} ${dept.shadow} group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                                     <i data-lucide="${dept.icon}" class="w-6 h-6 text-white"></i>
                                 </div>
@@ -225,7 +252,6 @@
                                 </div>
                             </div>
 
-                            <!-- Right-side tactical feedback icon -->
                             <div class="flex items-center justify-center">
                                 ${isActive 
                                     ? `<div class="w-2.5 h-2.5 rounded-full bg-gradient-to-r ${dept.color} animate-ping"></div>`
@@ -243,7 +269,7 @@
             if (!container) return;
 
             const d = activeDept;
-            const accentColorClass = `text-indigo-400`; // Universal clean aesthetic color
+            const accentColorClass = `text-indigo-400`;
 
             container.innerHTML = `
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 fade-in">
