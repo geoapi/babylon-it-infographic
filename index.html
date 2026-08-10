@@ -17,35 +17,35 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-200 overflow-x-hidden relative selection:bg-indigo-500/30 selection:text-white">
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950/80 to-slate-900 text-slate-100 overflow-x-hidden relative selection:bg-indigo-500/30 selection:text-white">
 
     <!-- Interactive Canvas Particle Background -->
     <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
     <!-- Top Navigation Menu -->
-    <nav class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-850/80 px-6 md:px-10 py-3.5 shadow-lg">
+    <nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-indigo-500/20 px-6 md:px-10 py-3.5 shadow-xl shadow-indigo-950/50">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <!-- Brand / Logo Link -->
             <a href="https://itbabylon.org" class="flex items-center gap-2.5 group">
-                <div class="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 group-hover:bg-indigo-500/20 transition-all duration-300">
-                    <i data-lucide="globe" class="w-5 h-5 text-indigo-400"></i>
+                <div class="p-2 rounded-xl bg-indigo-500/20 border border-indigo-400/30 group-hover:bg-indigo-500/30 transition-all duration-300">
+                    <i data-lucide="globe" class="w-5 h-5 text-indigo-300"></i>
                 </div>
-                <span class="font-bold text-sm md:text-base tracking-tight text-slate-100 group-hover:text-indigo-300 transition-colors">
+                <span class="font-bold text-sm md:text-base tracking-tight text-white group-hover:text-indigo-300 transition-colors">
                     IT Babylon <span class="text-xs text-indigo-400 font-normal">Portal</span>
                 </span>
             </a>
 
             <!-- Navigation Links -->
             <div class="flex items-center gap-1 sm:gap-3">
-                <a href="https://itbabylon.org" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-900/80 border border-transparent hover:border-slate-800 transition-all duration-200">
+                <a href="https://itbabylon.org" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold text-slate-200 hover:text-white hover:bg-indigo-600/20 border border-transparent hover:border-indigo-500/30 transition-all duration-200">
                     <i data-lucide="home" class="w-4 h-4 text-indigo-400"></i>
                     <span>Home</span>
                 </a>
-                <a href="https://moodle.itbabylon.org" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-900/80 border border-transparent hover:border-slate-800 transition-all duration-200">
+                <a href="https://moodle.itbabylon.org" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold text-slate-200 hover:text-white hover:bg-indigo-600/20 border border-transparent hover:border-indigo-500/30 transition-all duration-200">
                     <i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-400"></i>
                     <span>Moodle</span>
                 </a>
-                <a href="https://booking.itbabylon.org" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-900/80 border border-transparent hover:border-slate-800 transition-all duration-200">
+                <a href="https://booking.itbabylon.org" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold text-slate-200 hover:text-white hover:bg-indigo-600/20 border border-transparent hover:border-indigo-500/30 transition-all duration-200">
                     <i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i>
                     <span>Booking</span>
                 </a>
@@ -54,46 +54,41 @@
     </nav>
 
     <!-- Global Header -->
-    <header class="relative z-10 p-6 md:p-10 text-center border-b border-slate-900/80 bg-slate-950/70 backdrop-blur-md">
+    <header class="relative z-10 p-6 md:p-10 text-center border-b border-indigo-500/15 bg-slate-900/60 backdrop-blur-md">
         
-        <!-- Official University of Babylon & Partner Logo Emblem Section -->
+        <!-- Official University of Babylon Logo Emblem -->
         <div class="flex justify-center items-center gap-6 mb-6">
-            <!-- University of Babylon Vector Logo -->
             <div class="flex flex-col items-center gap-2">
-                <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 via-purple-600 to-indigo-800 rounded-full p-[2px] shadow-lg shadow-indigo-500/20">
-                    <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center p-2 border border-slate-800">
-                        <svg class="w-12 h-12 text-indigo-400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Outer decorative arch (representing historic Babylon arches) -->
+                <div class="w-20 h-20 bg-gradient-to-br from-indigo-400 via-indigo-600 to-blue-700 rounded-full p-[2px] shadow-lg shadow-indigo-500/30">
+                    <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center p-2 border border-indigo-400/20">
+                        <svg class="w-12 h-12 text-indigo-300" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M50 15C30.67 15 15 30.67 15 50C15 69.33 30.67 85 50 85C69.33 85 85 69.33 85 50C85 30.67 69.33 15 50 15ZM50 80C33.43 80 20 66.57 20 50C20 33.43 33.43 20 50 20C66.57 20 80 33.43 80 50C80 66.57 66.57 80 50 80Z" fill="currentColor"/>
-                            <!-- Ishtar Gate stylized towers representing Babylon heritage -->
                             <path d="M38 42H44V65H38V42ZM56 42H62V65H56V42Z" fill="currentColor" opacity="0.8"/>
-                            <!-- Central palm tree of Babylon representing learning and growth -->
                             <path d="M50 32C46 34 46 39 49 42V65H51V42C54 39 54 34 50 32Z" fill="currentColor"/>
-                            <!-- Historic waves of the Euphrates River below -->
                             <path d="M30 70C35 68 38 72 43 70C48 68 52 72 57 70C62 68 65 72 70 70" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
                 </div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-400/80">University of Babylon</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-300">University of Babylon</span>
             </div>
         </div>
 
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">
-            College of <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Information Technology</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2 text-white">
+            College of <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-indigo-300 to-blue-400">Information Technology</span>
         </h1>
-        <p class="text-slate-400 text-lg flex items-center justify-center gap-2">
+        <p class="text-slate-300 text-lg flex items-center justify-center gap-2">
             <i data-lucide="map-pin" class="w-5 h-5 text-indigo-400"></i> University of Babylon, Iraq
         </p>
         
         <!-- Global Highlight Badges -->
         <div class="flex flex-wrap justify-center gap-3 mt-6">
-            <div class="px-4 py-2 bg-slate-900/90 border border-slate-850 rounded-full flex items-center gap-2 text-xs md:text-sm text-amber-400 shadow-sm">
+            <div class="px-4 py-2 bg-slate-900/80 border border-indigo-500/20 rounded-full flex items-center gap-2 text-xs md:text-sm text-amber-300 shadow-sm">
                 <i data-lucide="award" class="w-4 h-4"></i> Bologna Process Standardized
             </div>
-            <div class="px-4 py-2 bg-slate-900/90 border border-slate-850 rounded-full flex items-center gap-2 text-xs md:text-sm text-emerald-400 shadow-sm">
+            <div class="px-4 py-2 bg-slate-900/80 border border-indigo-500/20 rounded-full flex items-center gap-2 text-xs md:text-sm text-emerald-300 shadow-sm">
                 <i data-lucide="cpu" class="w-4 h-4"></i> Premier Tech Infrastructure
             </div>
-            <div class="px-4 py-2 bg-slate-900/90 border border-slate-850 rounded-full flex items-center gap-2 text-xs md:text-sm text-blue-400 shadow-sm">
+            <div class="px-4 py-2 bg-slate-900/80 border border-indigo-500/20 rounded-full flex items-center gap-2 text-xs md:text-sm text-cyan-300 shadow-sm">
                 <i data-lucide="cloud" class="w-4 h-4"></i> Moodle & Smart Classrooms
             </div>
         </div>
@@ -102,8 +97,8 @@
     <main class="relative z-10 max-w-7xl mx-auto p-4 md:p-8">
         
         <!-- Tab Helper -->
-        <p class="text-center text-xs uppercase text-indigo-400/80 mb-6 font-bold tracking-wider flex items-center justify-center gap-2">
-            <span class="inline-block w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
+        <p class="text-center text-xs uppercase text-indigo-300 mb-6 font-bold tracking-wider flex items-center justify-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
             Select a Department Hub to explore details
         </p>
 
@@ -113,17 +108,16 @@
         </div>
 
         <!-- Dashboard Content -->
-        <div id="content-container" class="bg-slate-900/40 border border-slate-850 rounded-3xl p-6 md:p-10 backdrop-blur-xl shadow-2xl transition-all duration-300">
+        <div id="content-container" class="bg-slate-900/70 border border-indigo-500/20 rounded-3xl p-6 md:p-10 backdrop-blur-xl shadow-2xl shadow-indigo-950/60 transition-all duration-300">
             <!-- Dynamic Content injected via JS -->
         </div>
     </main>
 
-    <footer class="relative z-10 text-center py-10 text-slate-600 text-xs border-t border-slate-900/60 mt-12 bg-slate-950/50">
+    <footer class="relative z-10 text-center py-10 text-slate-400 text-xs border-t border-indigo-500/15 mt-12 bg-slate-950/70">
         Interactive Departmental Infographic Directory • University of Babylon • Created with Custom Engine
     </footer>
 
     <script>
-        // Data Configuration containing all structural details (Reordered: Networks -> Software -> Cyber -> AI)
         const data = {
             network: {
                 id: 'network', 
@@ -204,16 +198,13 @@
             }
         };
 
-        // Default Active Tab
         let activeDept = data.network;
 
-        // Render functions with error boundaries for safety
         function renderApp() {
             try {
                 renderNav();
                 renderContent();
                 
-                // Safe check for Lucide icons rendering
                 if (typeof lucide !== 'undefined' && lucide.createIcons) {
                     lucide.createIcons();
                 }
@@ -230,14 +221,14 @@
                 const isActive = activeDept.id === dept.id;
                 
                 const stateClasses = isActive 
-                    ? `${dept.borderColor} bg-slate-900/90 scale-[1.03] -translate-y-1 ${dept.glow} ring-2 ring-indigo-500/10` 
-                    : `border-slate-850 bg-slate-900/30 hover:bg-slate-900/60 hover:-translate-y-1 hover:scale-[1.02] hover:border-slate-700/80 hover:shadow-lg active:scale-95`;
+                    ? `${dept.borderColor} bg-slate-900/90 scale-[1.03] -translate-y-1 ${dept.glow} ring-2 ring-indigo-400/20` 
+                    : `border-indigo-500/15 bg-slate-900/40 hover:bg-slate-900/70 hover:-translate-y-1 hover:scale-[1.02] hover:border-indigo-400/40 hover:shadow-lg active:scale-95`;
                 
                 return `
                     <button onclick="setActive('${dept.id}')" 
                             class="relative group p-5 rounded-2xl transition-all duration-300 text-left border backdrop-blur-sm cursor-pointer select-none ${stateClasses}">
                         
-                        <div class="absolute inset-0 opacity-0 group-hover:opacity-[0.04] bg-gradient-to-br ${dept.color} transition-opacity duration-300 rounded-2xl"></div>
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-[0.06] bg-gradient-to-br ${dept.color} transition-opacity duration-300 rounded-2xl"></div>
                         
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${dept.color} rounded-t-2xl transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}"></div>
                         
@@ -248,14 +239,14 @@
                                 </div>
                                 <div class="min-w-0">
                                     <h2 class="text-md md:text-lg font-bold text-white tracking-tight leading-tight group-hover:text-indigo-200 transition-colors">${dept.title}</h2>
-                                    <p class="text-xs text-slate-400 group-hover:text-slate-300 transition-colors truncate mt-0.5">${dept.tagline}</p>
+                                    <p class="text-xs text-slate-300 group-hover:text-slate-200 transition-colors truncate mt-0.5">${dept.tagline}</p>
                                 </div>
                             </div>
 
                             <div class="flex items-center justify-center">
                                 ${isActive 
                                     ? `<div class="w-2.5 h-2.5 rounded-full bg-gradient-to-r ${dept.color} animate-ping"></div>`
-                                    : `<i data-lucide="chevron-right" class="w-5 h-5 text-slate-600 opacity-0 group-hover:opacity-100 translate-x-[-4px] group-hover:translate-x-0 transition-all duration-300"></i>`
+                                    : `<i data-lucide="chevron-right" class="w-5 h-5 text-slate-500 opacity-0 group-hover:opacity-100 translate-x-[-4px] group-hover:translate-x-0 transition-all duration-300"></i>`
                                 }
                             </div>
                         </div>
@@ -269,7 +260,7 @@
             if (!container) return;
 
             const d = activeDept;
-            const accentColorClass = `text-indigo-400`;
+            const accentColorClass = `text-indigo-300`;
 
             container.innerHTML = `
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 fade-in">
@@ -277,36 +268,36 @@
                     <!-- Academics Section -->
                     <div class="space-y-6">
                         <div>
-                            <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold mb-4 text-white border-b border-slate-800/80 pb-2.5">
+                            <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold mb-4 text-white border-b border-indigo-500/20 pb-2.5">
                                 <i data-lucide="graduation-cap" class="${accentColorClass} w-5 h-5"></i>
                                 Academic Excellence
                             </h3>
                             <div class="flex flex-wrap gap-2.5 mb-6">
-                                ${d.degrees.map(deg => `<span class="px-3 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-xs font-semibold tracking-wide">${deg}</span>`).join('')}
+                                ${d.degrees.map(deg => `<span class="px-3 py-1 rounded-lg bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs font-semibold tracking-wide">${deg}</span>`).join('')}
                             </div>
                             
-                            <h4 class="text-xs text-slate-500 uppercase tracking-wider mb-3 font-semibold">Core Specializations</h4>
+                            <h4 class="text-xs text-indigo-300 uppercase tracking-wider mb-3 font-semibold">Core Specializations</h4>
                             <div class="flex flex-wrap gap-2">
-                                ${d.core.map(skill => `<span class="px-3 py-1.5 bg-slate-900/60 rounded-lg text-xs text-slate-300 border border-slate-800/80 hover:border-slate-700 transition-colors">${skill}</span>`).join('')}
+                                ${d.core.map(skill => `<span class="px-3 py-1.5 bg-slate-900/80 rounded-lg text-xs text-slate-200 border border-indigo-500/20 hover:border-indigo-400/40 transition-colors">${skill}</span>`).join('')}
                             </div>
                         </div>
                     </div>
 
                     <!-- Research Hubs -->
-                    <div class="space-y-5 lg:border-l lg:border-r border-slate-900 lg:px-8">
-                        <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold mb-4 text-white border-b border-slate-800/80 pb-2.5">
+                    <div class="space-y-5 lg:border-l lg:border-r border-indigo-500/20 lg:px-8">
+                        <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold mb-4 text-white border-b border-indigo-500/20 pb-2.5">
                             <i data-lucide="microscope" class="${accentColorClass} w-5 h-5"></i>
                             Active Research Hubs
                         </h3>
                         
                         <div class="grid gap-3.5">
                             ${d.research.map(res => `
-                                <div class="relative p-4 bg-slate-950/40 rounded-xl border border-slate-900/80 group hover:border-slate-800 transition-colors">
-                                    <div class="absolute left-0 top-0 w-1 h-full rounded-l-xl bg-gradient-to-b ${d.color} opacity-40 group-hover:opacity-100 transition-opacity"></div>
+                                <div class="relative p-4 bg-slate-900/60 rounded-xl border border-indigo-500/20 group hover:border-indigo-400/40 transition-colors">
+                                    <div class="absolute left-0 top-0 w-1 h-full rounded-l-xl bg-gradient-to-b ${d.color} opacity-60 group-hover:opacity-100 transition-opacity"></div>
                                     <h4 class="text-white text-sm font-bold mb-1 flex items-center gap-2">
-                                        <i data-lucide="zap" class="w-3.5 h-3.5 text-slate-500"></i> ${res.title}
+                                        <i data-lucide="zap" class="w-3.5 h-3.5 text-indigo-400"></i> ${res.title}
                                     </h4>
-                                    <p class="text-xs text-slate-400 pl-5 leading-relaxed">${res.desc}</p>
+                                    <p class="text-xs text-slate-300 pl-5 leading-relaxed">${res.desc}</p>
                                 </div>
                             `).join('')}
                         </div>
@@ -315,8 +306,8 @@
                     <!-- Career Ecosystem & Partnerships -->
                     <div class="space-y-6">
                         ${(d.id === 'network' || d.id === 'software') ? `
-                            <div class="p-4 rounded-xl bg-gradient-to-br from-purple-950/20 to-indigo-950/20 border border-purple-500/20 mb-4 flex items-start gap-4">
-                                <div class="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 mt-1">
+                            <div class="p-4 rounded-xl bg-gradient-to-br from-purple-900/30 to-indigo-900/30 border border-purple-400/30 mb-4 flex items-start gap-4">
+                                <div class="p-2 rounded-lg bg-indigo-500/20 border border-indigo-400/40 text-indigo-300 mt-1">
                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
@@ -324,36 +315,36 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="text-purple-300 text-sm font-bold mb-1 flex items-center gap-2">
+                                    <h4 class="text-purple-200 text-sm font-bold mb-1 flex items-center gap-2">
                                         UK Twinning Program
                                     </h4>
-                                    <p class="text-xs text-purple-200/75 leading-relaxed">Exclusive <strong>"2+2"</strong> model franchise agreement with the University of Northampton.</p>
+                                    <p class="text-xs text-purple-200/90 leading-relaxed">Exclusive <strong>"2+2"</strong> model franchise agreement with the University of Northampton.</p>
                                 </div>
                             </div>
                         ` : ''}
 
                         <div>
-                            <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold mb-4 text-white border-b border-slate-800/80 pb-2.5">
+                            <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold mb-4 text-white border-b border-indigo-500/20 pb-2.5">
                                 <i data-lucide="briefcase" class="${accentColorClass} w-5 h-5"></i>
                                 Career Ecosystem
                             </h3>
                             
-                            <h4 class="text-xs text-slate-500 uppercase tracking-wider mb-3 font-semibold">Global Alliances</h4>
+                            <h4 class="text-xs text-indigo-300 uppercase tracking-wider mb-3 font-semibold">Global Alliances</h4>
                             <ul class="space-y-2 mb-6">
                                 ${d.partners.map(partner => `
-                                    <li class="flex items-center gap-2.5 text-xs text-slate-300">
-                                        <div class="w-1.5 h-1.5 rounded-full bg-indigo-400"></div>
+                                    <li class="flex items-center gap-2.5 text-xs text-slate-200">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
                                         ${partner}
                                     </li>
                                 `).join('')}
                             </ul>
 
-                            <h4 class="text-xs text-slate-500 uppercase tracking-wider mb-3 font-semibold">Target Careers</h4>
+                            <h4 class="text-xs text-indigo-300 uppercase tracking-wider mb-3 font-semibold">Target Careers</h4>
                             <div class="flex flex-col gap-2">
                                 ${d.careers.map(career => `
-                                    <div class="px-4 py-2.5 bg-slate-950/30 rounded-xl border border-slate-900 flex items-center justify-between hover:border-slate-800 transition-colors">
+                                    <div class="px-4 py-2.5 bg-slate-900/60 rounded-xl border border-indigo-500/20 flex items-center justify-between hover:border-indigo-400/40 transition-colors">
                                         <span class="text-xs font-semibold text-slate-200">${career}</span>
-                                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-indigo-500/80"></i>
+                                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-cyan-400"></i>
                                     </div>
                                 `).join('')}
                             </div>
@@ -363,7 +354,6 @@
             `;
         }
 
-        // Global state handler
         window.setActive = function(deptId) {
             activeDept = data[deptId];
             renderApp();
@@ -400,7 +390,7 @@
                 
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(148, 163, 184, 0.2)';
+                ctx.fillStyle = 'rgba(165, 180, 252, 0.3)';
                 ctx.fill();
             });
 
@@ -412,7 +402,7 @@
                     
                     if (distance < 150) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 - distance/1500})`;
+                        ctx.strokeStyle = `rgba(129, 140, 248, ${0.15 - distance/1000})`;
                         ctx.lineWidth = 0.8;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -425,14 +415,12 @@
 
         window.addEventListener('resize', initCanvas);
         
-        // Document Ready Entrypoint
         document.addEventListener("DOMContentLoaded", () => {
             initCanvas();
             animateCanvas();
             renderApp();
         });
 
-        // Fail-safe initialization fallback
         setTimeout(renderApp, 200);
     </script>
 </body>
