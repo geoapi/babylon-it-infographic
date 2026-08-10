@@ -19,33 +19,32 @@
 </head>
 <body id="app-body" class="min-h-screen bg-slate-950 text-slate-100 overflow-x-hidden relative flex flex-col">
 
-    <!-- Canvas Background -->
+    <!-- Background Animation Canvas -->
     <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <!-- Clean Top Navigation (No Theme Controls) -->
-    <nav id="app-nav" class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-indigo-500/30 px-3 md:px-8 py-3 shadow-2xl">
+    <!-- Top Navigation Bar -->
+    <nav id="app-nav" class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-indigo-500/30 px-4 md:px-8 py-3 shadow-2xl transition-colors duration-300">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
-            
-            <!-- Brand -->
-            <a href="https://itbabylon.org" class="flex items-center gap-2 group">
-                <div class="p-2 rounded-xl bg-indigo-500/20 border border-indigo-400/40 text-indigo-300">
+            <a href="https://itbabylon.org" class="flex items-center gap-2.5 group">
+                <div id="nav-brand-icon" class="p-2 rounded-xl bg-indigo-500/20 border border-indigo-400/40 text-indigo-300 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M2 12h20"/></svg>
                 </div>
-                <span class="font-bold text-sm md:text-base tracking-tight text-white">IT Babylon <span class="text-xs text-indigo-400 font-normal">Portal</span></span>
+                <span id="nav-brand-title" class="font-bold text-sm md:text-base tracking-tight text-white transition-colors">
+                    IT Babylon <span id="nav-brand-sub" class="text-xs text-indigo-400 font-normal transition-colors">Portal</span>
+                </span>
             </a>
 
-            <!-- Navigation Links -->
+            <!-- Dynamic Contrast Navigation Links -->
             <div class="flex items-center gap-2">
-                <a href="https://itbabylon.org" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-white hover:bg-indigo-600/20">Home</a>
-                <a href="https://moodle.itbabylon.org" target="_blank" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-white hover:bg-indigo-600/20">Moodle</a>
-                <a href="https://booking.itbabylon.org" target="_blank" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-white hover:bg-indigo-600/20">Booking</a>
+                <a id="nav-link-1" href="https://itbabylon.org" class="px-3 py-1.5 rounded-lg text-xs transition-all">Home</a>
+                <a id="nav-link-2" href="https://moodle.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg text-xs transition-all">Moodle</a>
+                <a id="nav-link-3" href="https://booking.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg text-xs transition-all">Booking</a>
             </div>
-
         </div>
     </nav>
 
-    <!-- Global Header -->
-    <header id="app-header" class="relative z-10 p-6 md:p-10 text-center border-b border-indigo-500/20 bg-slate-900/60 backdrop-blur-md">
+    <!-- Header -->
+    <header id="app-header" class="relative z-10 p-6 md:p-10 text-center border-b border-indigo-500/20 bg-slate-900/60 backdrop-blur-md transition-colors duration-300">
         <div class="flex justify-center items-center gap-6 mb-6">
             <div class="flex flex-col items-center gap-2">
                 <div class="w-20 h-20 bg-gradient-to-br from-indigo-400 via-indigo-600 to-blue-700 rounded-full p-[2px] shadow-lg shadow-indigo-500/30">
@@ -58,70 +57,71 @@
                         </svg>
                     </div>
                 </div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-400">University of Babylon</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-500">University of Babylon</span>
             </div>
         </div>
 
         <h1 id="header-title" class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2 text-white">
-            College of <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-indigo-300 to-blue-400">Information Technology</span>
+            College of <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-500 to-blue-600">Information Technology</span>
         </h1>
-        <p id="header-subtitle" class="text-slate-300 text-lg flex items-center justify-center gap-2">
+        <p id="header-subtitle" class="text-slate-300 text-lg flex items-center justify-center gap-2 font-medium">
             📍 University of Babylon, Iraq
         </p>
         
         <div class="flex flex-wrap justify-center gap-3 mt-6">
-            <div id="badge-1" class="px-4 py-2 bg-slate-900/80 border border-indigo-500/20 rounded-full flex items-center gap-2 text-xs md:text-sm text-amber-300 shadow-sm">
+            <div id="badge-1" class="px-4 py-2 rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors">
                 🏆 Bologna Process Standardized
             </div>
-            <div id="badge-2" class="px-4 py-2 bg-slate-900/80 border border-indigo-500/20 rounded-full flex items-center gap-2 text-xs md:text-sm text-emerald-300 shadow-sm">
+            <div id="badge-2" class="px-4 py-2 rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors">
                 ⚡ Premier Tech Infrastructure
             </div>
-            <div id="badge-3" class="px-4 py-2 bg-slate-900/80 border border-indigo-500/20 rounded-full flex items-center gap-2 text-xs md:text-sm text-cyan-300 shadow-sm">
+            <div id="badge-3" class="px-4 py-2 rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors">
                 💻 Moodle & Smart Classrooms
             </div>
         </div>
     </header>
 
+    <!-- Main Content Area -->
     <main class="relative z-10 max-w-7xl mx-auto p-4 md:p-8 flex-grow">
-        <p id="tab-helper-text" class="text-center text-xs uppercase text-indigo-300 mb-6 font-bold tracking-wider flex items-center justify-center gap-2">
-            <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <p id="tab-helper-text" class="text-center text-xs uppercase mb-6 font-bold tracking-wider flex items-center justify-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
             Select a Department Hub to explore details
         </p>
 
-        <!-- Department Buttons -->
+        <!-- Department Buttons Grid -->
         <div id="nav-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10"></div>
 
-        <!-- Main Content Box -->
+        <!-- Main Content Display -->
         <div id="content-container" class="bg-slate-900/70 border border-indigo-500/20 rounded-3xl p-6 md:p-10 backdrop-blur-xl shadow-2xl transition-all duration-300"></div>
     </main>
 
-    <!-- Footer with Theme Selector Bar at the Bottom -->
-    <footer id="app-footer" class="relative z-10 border-t border-indigo-500/15 mt-12 bg-slate-950/80">
-        <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col items-center gap-6">
+    <!-- Footer at the Bottom of the Page (Contains Theme Selector) -->
+    <footer id="app-footer" class="relative z-10 border-t border-indigo-500/15 mt-16 bg-slate-950/90 py-8 px-4 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-6 text-center">
             
-            <p class="text-slate-400 text-xs text-center">
+            <p id="footer-text" class="text-slate-400 text-xs">
                 Interactive Departmental Infographic Directory • University of Babylon
             </p>
 
-            <!-- THEME SELECTOR BAR LOCATED DIRECTLY AT THE BOTTOM OF THE PAGE -->
-            <div id="footer-theme-selector" class="flex flex-col sm:flex-row items-center gap-3 p-2 rounded-2xl bg-slate-900/90 border border-indigo-500/30 shadow-2xl">
-                <span class="text-xs font-bold uppercase tracking-wider text-indigo-300 px-3 flex items-center gap-2">
+            <!-- THEME SELECTOR TOOLBAR IN FOOTER -->
+            <div id="footer-theme-selector" class="flex flex-col sm:flex-row items-center gap-3 p-2 rounded-2xl bg-slate-900/90 border border-indigo-500/30 shadow-2xl transition-colors duration-300">
+                <span id="theme-selector-label" class="text-xs font-bold uppercase tracking-wider text-indigo-300 px-3 flex items-center gap-2">
                     <i data-lucide="palette" class="w-4 h-4 text-amber-400"></i>
                     Theme Selector:
                 </span>
                 
                 <div class="flex items-center gap-2">
-                    <button onclick="setTheme('sapphire')" id="btn-sapphire" class="theme-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border">
+                    <button onclick="setTheme('sapphire')" id="btn-sapphire" class="theme-btn px-4 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border">
                         <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
                         Sapphire
                     </button>
                     
-                    <button onclick="setTheme('light')" id="btn-light" class="theme-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border">
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                    <button onclick="setTheme('light')" id="btn-light" class="theme-btn px-4 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border">
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
                         Light
                     </button>
                     
-                    <button onclick="setTheme('emerald')" id="btn-emerald" class="theme-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border">
+                    <button onclick="setTheme('emerald')" id="btn-emerald" class="theme-btn px-4 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
                         Emerald
                     </button>
@@ -137,10 +137,18 @@
                 name: 'Midnight Sapphire',
                 body: 'bg-gradient-to-br from-slate-950 via-indigo-950/80 to-slate-900 text-slate-100',
                 nav: 'bg-slate-900/90 border-b border-indigo-500/30 shadow-2xl',
+                navBrandTitle: 'text-white',
+                navBrandSub: 'text-indigo-400',
+                navBrandIcon: 'bg-indigo-500/20 border-indigo-400/40 text-indigo-300',
+                navLink: 'text-slate-200 font-semibold hover:text-white hover:bg-indigo-600/30',
                 header: 'bg-slate-900/60 border-b border-indigo-500/20',
                 card: 'bg-slate-900/80 border border-indigo-500/30 shadow-2xl text-slate-100',
-                badge: 'bg-slate-900/80 border border-indigo-500/20 text-indigo-200',
-                footer: 'bg-slate-950/80 border-t border-indigo-500/15 text-slate-400',
+                badge1: 'bg-slate-900/80 border border-indigo-500/20 text-amber-300',
+                badge2: 'bg-slate-900/80 border border-indigo-500/20 text-emerald-300',
+                badge3: 'bg-slate-900/80 border border-indigo-500/20 text-cyan-300',
+                footer: 'bg-slate-950/90 border-t border-indigo-500/15',
+                footerText: 'text-slate-400',
+                themeLabel: 'text-indigo-300',
                 headingText: 'text-white',
                 bodyText: 'text-slate-300',
                 subText: 'text-indigo-300',
@@ -151,17 +159,26 @@
             },
             light: {
                 name: 'Modern Light',
-                body: 'bg-slate-100 text-slate-800',
+                body: 'bg-slate-100 text-slate-900',
                 nav: 'bg-white/95 border-b border-slate-300 shadow-md',
+                navBrandTitle: 'text-slate-900 font-extrabold',
+                navBrandSub: 'text-indigo-700 font-bold',
+                navBrandIcon: 'bg-indigo-100 border-indigo-300 text-indigo-700',
+                // High-contrast, vibrant text for Home, Moodle, Booking in Light Theme
+                navLink: 'text-slate-900 font-extrabold hover:text-indigo-700 hover:bg-indigo-50 border border-slate-200/80 shadow-sm bg-slate-50',
                 header: 'bg-white/80 border-b border-slate-200',
-                card: 'bg-white border border-slate-200/90 shadow-xl text-slate-800',
-                badge: 'bg-white border border-slate-300 text-slate-700 font-semibold',
-                footer: 'bg-white border-t border-slate-200 text-slate-500',
-                headingText: 'text-slate-900',
-                bodyText: 'text-slate-600',
-                subText: 'text-indigo-600',
-                activeBtn: 'bg-indigo-600 text-white border-indigo-500 shadow-md ring-2 ring-indigo-400/40',
-                inactiveBtn: 'bg-slate-200 text-slate-700 border-slate-300 hover:bg-slate-300',
+                card: 'bg-white border border-slate-300 shadow-xl text-slate-900',
+                badge1: 'bg-amber-100 border border-amber-300 text-amber-950 font-bold',
+                badge2: 'bg-emerald-100 border border-emerald-300 text-emerald-950 font-bold',
+                badge3: 'bg-cyan-100 border border-cyan-300 text-cyan-950 font-bold',
+                footer: 'bg-white border-t border-slate-300',
+                footerText: 'text-slate-700 font-semibold',
+                themeLabel: 'text-indigo-950 font-black',
+                headingText: 'text-slate-900 font-black',
+                bodyText: 'text-slate-800 font-bold',
+                subText: 'text-indigo-900 font-black',
+                activeBtn: 'bg-indigo-700 text-white border-indigo-600 shadow-md ring-2 ring-indigo-500/40 font-bold',
+                inactiveBtn: 'bg-slate-200 text-slate-900 border-slate-300 hover:bg-slate-300 font-bold',
                 particleDot: 'rgba(99, 102, 241, 0.25)',
                 particleLine: 'rgba(99, 102, 241, '
             },
@@ -169,10 +186,18 @@
                 name: 'Deep Emerald',
                 body: 'bg-gradient-to-br from-slate-950 via-emerald-950/80 to-slate-900 text-slate-100',
                 nav: 'bg-slate-900/90 border-b border-emerald-500/30 shadow-2xl',
+                navBrandTitle: 'text-white',
+                navBrandSub: 'text-emerald-400',
+                navBrandIcon: 'bg-emerald-500/20 border-emerald-400/40 text-emerald-300',
+                navLink: 'text-slate-200 font-semibold hover:text-white hover:bg-emerald-600/30',
                 header: 'bg-slate-900/60 border-b border-emerald-500/20',
                 card: 'bg-slate-900/80 border border-emerald-500/30 shadow-2xl text-slate-100',
-                badge: 'bg-slate-900/80 border border-emerald-500/20 text-emerald-200',
-                footer: 'bg-slate-950/80 border-t border-emerald-500/15 text-slate-400',
+                badge1: 'bg-slate-900/80 border border-emerald-500/20 text-amber-300',
+                badge2: 'bg-slate-900/80 border border-emerald-500/20 text-emerald-300',
+                badge3: 'bg-slate-900/80 border border-emerald-500/20 text-cyan-300',
+                footer: 'bg-slate-950/90 border-t border-emerald-500/15',
+                footerText: 'text-slate-400',
+                themeLabel: 'text-emerald-300',
                 headingText: 'text-white',
                 bodyText: 'text-slate-300',
                 subText: 'text-emerald-300',
@@ -247,27 +272,41 @@
             currentThemeKey = key;
             const t = themes[key];
 
-            // Update Page Structure Colors
+            // Page Sections & Backgrounds
             document.getElementById('app-body').className = `min-h-screen ${t.body} transition-colors duration-300 flex flex-col`;
-            document.getElementById('app-nav').className = `sticky top-0 z-50 ${t.nav} px-3 md:px-8 py-3 transition-colors duration-300`;
+            document.getElementById('app-nav').className = `sticky top-0 z-50 ${t.nav} px-4 md:px-8 py-3 transition-colors duration-300`;
             document.getElementById('app-header').className = `relative z-10 p-6 md:p-10 text-center ${t.header} backdrop-blur-md transition-colors duration-300`;
-            document.getElementById('app-footer').className = `relative z-10 border-t ${t.footer} mt-12 transition-colors duration-300`;
+            document.getElementById('app-footer').className = `relative z-10 border-t ${t.footer} mt-16 transition-colors duration-300 py-8 px-4`;
 
-            // Update Typography
+            // Brand Styling
+            document.getElementById('nav-brand-icon').className = `p-2 rounded-xl border transition-colors ${t.navBrandIcon}`;
+            document.getElementById('nav-brand-title').className = `font-bold text-sm md:text-base tracking-tight transition-colors ${t.navBrandTitle}`;
+            document.getElementById('nav-brand-sub').className = `text-xs transition-colors ${t.navBrandSub}`;
+
+            // Top Nav Links (Home, Moodle, Booking) - High Contrast Fix
+            ['nav-link-1', 'nav-link-2', 'nav-link-3'].forEach(id => {
+                const link = document.getElementById(id);
+                if (link) link.className = `px-3 py-1.5 rounded-lg text-xs transition-all ${t.navLink}`;
+            });
+
+            // Header Typography & Helper Text
             document.getElementById('header-title').className = `text-4xl md:text-5xl font-extrabold tracking-tight mb-2 ${t.headingText}`;
             document.getElementById('header-subtitle').className = `${t.bodyText} text-lg flex items-center justify-center gap-2`;
             document.getElementById('tab-helper-text').className = `text-center text-xs uppercase ${t.subText} mb-6 font-bold tracking-wider flex items-center justify-center gap-2`;
 
             // Badges
-            ['badge-1', 'badge-2', 'badge-3'].forEach(id => {
-                document.getElementById(id).className = `px-4 py-2 ${t.badge} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm`;
-            });
+            document.getElementById('badge-1').className = `px-4 py-2 ${t.badge1} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
+            document.getElementById('badge-2').className = `px-4 py-2 ${t.badge2} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
+            document.getElementById('badge-3').className = `px-4 py-2 ${t.badge3} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
 
-            // Update Footer Theme Selector Button Styles
+            // Footer Elements & Theme Selector
+            document.getElementById('footer-text').className = `text-xs text-center ${t.footerText}`;
+            document.getElementById('theme-selector-label').className = `text-xs font-bold uppercase tracking-wider px-3 flex items-center gap-2 ${t.themeLabel}`;
+
             ['sapphire', 'light', 'emerald'].forEach(k => {
                 const btn = document.getElementById(`btn-${k}`);
                 if (btn) {
-                    btn.className = `theme-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border ${k === key ? t.activeBtn : t.inactiveBtn}`;
+                    btn.className = `theme-btn px-4 py-1.5 rounded-xl text-xs transition-all flex items-center gap-2 cursor-pointer border ${k === key ? t.activeBtn : t.inactiveBtn}`;
                 }
             });
 
@@ -287,7 +326,7 @@
             container.innerHTML = Object.values(data).map(dept => {
                 const isActive = activeDept.id === dept.id;
                 const bgClass = isLight 
-                    ? (isActive ? 'bg-white border-indigo-500 ring-2 ring-indigo-300 shadow-md' : 'bg-white/80 border-slate-200 hover:bg-slate-50')
+                    ? (isActive ? 'bg-white border-indigo-600 ring-2 ring-indigo-400 shadow-md' : 'bg-white/90 border-slate-300 hover:bg-slate-50')
                     : (isActive ? `${dept.borderColor} bg-slate-900/90 ${dept.glow} ring-2 ring-indigo-400/20` : 'border-indigo-500/15 bg-slate-900/40 hover:bg-slate-900/70');
 
                 return `
@@ -297,8 +336,8 @@
                                 <i data-lucide="${dept.icon}" class="w-6 h-6 text-white"></i>
                             </div>
                             <div>
-                                <h2 class="text-md md:text-lg font-bold ${isLight ? 'text-slate-900' : 'text-white'}">${dept.title}</h2>
-                                <p class="text-xs ${isLight ? 'text-slate-500' : 'text-slate-300'}">${dept.tagline}</p>
+                                <h2 class="text-md md:text-lg font-extrabold ${isLight ? 'text-slate-950' : 'text-white'}">${dept.title}</h2>
+                                <p class="text-xs ${isLight ? 'text-slate-700 font-semibold' : 'text-slate-300'}">${dept.tagline}</p>
                             </div>
                         </div>
                     </button>
@@ -313,26 +352,26 @@
             const isLight = currentThemeKey === 'light';
 
             container.className = `${t.card} rounded-3xl p-6 md:p-10 backdrop-blur-xl transition-all duration-300`;
-            const cardBg = isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-900/60 border-indigo-500/20';
+            const cardBg = isLight ? 'bg-slate-100/80 border-slate-300' : 'bg-slate-900/60 border-indigo-500/20';
 
             container.innerHTML = `
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 fade-in">
                     <div>
-                        <h3 class="text-lg font-bold mb-4 ${t.headingText} border-b pb-2 ${isLight ? 'border-slate-200' : 'border-indigo-500/20'}">🎓 Academics</h3>
+                        <h3 class="text-lg font-bold mb-4 ${t.headingText} border-b pb-2 ${isLight ? 'border-slate-300' : 'border-indigo-500/20'}">🎓 Academics</h3>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            ${d.degrees.map(deg => `<span class="px-3 py-1 rounded-lg ${isLight ? 'bg-indigo-100 text-indigo-800' : 'bg-indigo-500/20 text-indigo-200'} text-xs font-semibold">${deg}</span>`).join('')}
+                            ${d.degrees.map(deg => `<span class="px-3 py-1 rounded-lg ${isLight ? 'bg-indigo-100 text-indigo-950 border border-indigo-300 font-bold' : 'bg-indigo-500/20 text-indigo-200'} text-xs font-semibold">${deg}</span>`).join('')}
                         </div>
                         <div class="flex flex-wrap gap-2">
                             ${d.core.map(skill => `<span class="px-3 py-1.5 ${cardBg} border rounded-lg text-xs ${t.bodyText}">${skill}</span>`).join('')}
                         </div>
                     </div>
 
-                    <div class="lg:border-l lg:border-r ${isLight ? 'border-slate-200' : 'border-indigo-500/20'} lg:px-6">
-                        <h3 class="text-lg font-bold mb-4 ${t.headingText} border-b pb-2 ${isLight ? 'border-slate-200' : 'border-indigo-500/20'}">🔬 Research Hubs</h3>
+                    <div class="lg:border-l lg:border-r ${isLight ? 'border-slate-300' : 'border-indigo-500/20'} lg:px-6">
+                        <h3 class="text-lg font-bold mb-4 ${t.headingText} border-b pb-2 ${isLight ? 'border-slate-300' : 'border-indigo-500/20'}">🔬 Research Hubs</h3>
                         <div class="space-y-3">
                             ${d.research.map(r => `
                                 <div class="p-3.5 ${cardBg} border rounded-xl">
-                                    <h4 class="font-bold text-sm ${t.headingText}">${r.title}</h4>
+                                    <h4 class="font-extrabold text-sm ${t.headingText}">${r.title}</h4>
                                     <p class="text-xs ${t.bodyText} mt-1">${r.desc}</p>
                                 </div>
                             `).join('')}
@@ -340,12 +379,12 @@
                     </div>
 
                     <div>
-                        <h3 class="text-lg font-bold mb-4 ${t.headingText} border-b pb-2 ${isLight ? 'border-slate-200' : 'border-indigo-500/20'}">💼 Career & Alliances</h3>
+                        <h3 class="text-lg font-bold mb-4 ${t.headingText} border-b pb-2 ${isLight ? 'border-slate-300' : 'border-indigo-500/20'}">💼 Career & Alliances</h3>
                         <ul class="space-y-2 mb-4">
                             ${d.partners.map(p => `<li class="text-xs ${t.bodyText}">• ${p}</li>`).join('')}
                         </ul>
                         <div class="space-y-2">
-                            ${d.careers.map(c => `<div class="px-3.5 py-2 ${cardBg} border rounded-xl text-xs font-semibold ${t.headingText}">${c}</div>`).join('')}
+                            ${d.careers.map(c => `<div class="px-3.5 py-2 ${cardBg} border rounded-xl text-xs font-bold ${t.headingText}">${c}</div>`).join('')}
                         </div>
                     </div>
                 </div>
@@ -357,7 +396,7 @@
             renderApp();
         };
 
-        // Canvas Particles
+        // Canvas Particle Network
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
