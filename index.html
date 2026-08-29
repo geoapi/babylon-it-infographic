@@ -55,15 +55,11 @@
 
     <!-- Header -->
     <header id="app-header" class="relative z-10 p-6 md:p-10 text-center border-b border-indigo-500/20 bg-slate-900/60 backdrop-blur-md transition-colors duration-300">
-        <div class="flex justify-center items-center gap-6 mb-6">
-                        <span id="header-univ-label" class="text-[11px] font-black uppercase tracking-widest transition-colors duration-300">University of Babylon</span>
-
-            <div class="flex flex-col items-center gap-2">
-                    <div id="header-logo-outer" class="w-20 h-20 bg-gradient-to-br from-indigo-500 via-indigo-700 to-blue-800 rounded-full p-[2px] shadow-lg">
-                        <div id="header-logo-inner" class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center overflow-hidden border border-indigo-400/20 transition-colors duration-300">
-                            <img id="header-logo-icon" src="https://raw.githubusercontent.com/geoapi/babylon-it-infographic/refs/heads/main/download.jpg" alt="College Logo" class="w-full h-full object-cover rounded-full transition-opacity duration-300">
-                        </div>
-                    </div>
+        <div class="flex flex-col items-center gap-3 mb-6">
+            <span id="header-univ-label" class="text-[11px] font-black uppercase tracking-widest transition-colors duration-300">University of Babylon</span>
+            <div id="header-logo-outer" class="w-20 h-20 bg-gradient-to-br from-indigo-500 via-indigo-700 to-blue-800 rounded-full p-[2px] shadow-lg">
+                <div id="header-logo-inner" class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center overflow-hidden border border-indigo-400/20 transition-colors duration-300">
+                    <img id="header-logo-icon" src="https://raw.githubusercontent.com/geoapi/babylon-it-infographic/refs/heads/main/download.jpg" alt="College Logo" class="w-full h-full object-cover rounded-full transition-opacity duration-300">
                 </div>
             </div>
         </div>
@@ -290,63 +286,64 @@
         let activeDept = data.network;
 
         function setTheme(key) {
-    if (!themes[key]) return;
-    currentThemeKey = key;
-    const t = themes[key];
+            if (!themes[key]) return;
+            currentThemeKey = key;
+            const t = themes[key];
 
-    // Toggle CSS Class for global style overrides
-    document.body.classList.toggle('theme-light', key === 'light');
+            // Toggle CSS Class for global style overrides
+            document.body.classList.toggle('theme-light', key === 'light');
 
-    // Page Sections & Backgrounds
-    document.getElementById('app-body').className = `min-h-screen ${t.body} transition-colors duration-300 flex flex-col ${key === 'light' ? 'theme-light' : ''}`;
-    document.getElementById('app-nav').className = `sticky top-0 z-50 ${t.nav} px-4 md:px-8 py-3 transition-colors duration-300`;
-    document.getElementById('app-header').className = `relative z-10 p-6 md:p-10 text-center ${t.header} backdrop-blur-md transition-colors duration-300`;
-    document.getElementById('app-footer').className = `relative z-10 border-t ${t.footer} mt-16 transition-colors duration-300 py-8 px-4`;
+            // Page Sections & Backgrounds
+            document.getElementById('app-body').className = `min-h-screen ${t.body} transition-colors duration-300 flex flex-col ${key === 'light' ? 'theme-light' : ''}`;
+            document.getElementById('app-nav').className = `sticky top-0 z-50 ${t.nav} px-4 md:px-8 py-3 transition-colors duration-300`;
+            document.getElementById('app-header').className = `relative z-10 p-6 md:p-10 text-center ${t.header} backdrop-blur-md transition-colors duration-300`;
+            document.getElementById('app-footer').className = `relative z-10 border-t ${t.footer} mt-16 transition-colors duration-300 py-8 px-4`;
 
-    // Brand Styling
-    document.getElementById('nav-brand-icon').className = `p-2 rounded-xl border transition-colors ${t.navBrandIcon}`;
-    document.getElementById('nav-brand-title').className = `font-bold text-sm md:text-base tracking-tight transition-colors ${t.navBrandTitle}`;
-    document.getElementById('nav-brand-sub').className = `text-xs transition-colors ${t.navBrandSub}`;
+            // Brand Styling
+            document.getElementById('nav-brand-icon').className = `p-2 rounded-xl border transition-colors ${t.navBrandIcon}`;
+            document.getElementById('nav-brand-title').className = `font-bold text-sm md:text-base tracking-tight transition-colors ${t.navBrandTitle}`;
+            document.getElementById('nav-brand-sub').className = `text-xs transition-colors ${t.navBrandSub}`;
 
-    // Top Nav Links (nav-link-4 added here)
-    ['nav-link-1', 'nav-link-2', 'nav-link-3', 'nav-link-4'].forEach(id => {
-        const link = document.getElementById(id);
-        if (link) link.className = `px-3 py-1.5 rounded-lg text-xs transition-all ${t.navLink}`;
-    });
+            // Top Nav Links
+            ['nav-link-1', 'nav-link-2', 'nav-link-3', 'nav-link-4'].forEach(id => {
+                const link = document.getElementById(id);
+                if (link) link.className = `px-3 py-1.5 rounded-lg text-xs transition-all ${t.navLink}`;
+            });
 
-    // Header Elements Styling
-    document.getElementById('header-univ-label').className = `text-[11px] font-black uppercase tracking-widest transition-colors duration-300 ${t.univLabel}`;
-    
-    const titleEl = document.getElementById('header-title');
-    titleEl.className = `text-4xl md:text-5xl font-black tracking-tight mb-2 transition-colors duration-300 ${t.headerTitleText}`;
-    
-    const gradientSpan = document.getElementById('header-title-gradient');
-    gradientSpan.className = `text-transparent bg-clip-text bg-gradient-to-r ${t.headerTitleGradient}`;
+            // Header Elements Styling
+            document.getElementById('header-univ-label').className = `text-[11px] font-black uppercase tracking-widest transition-colors duration-300 ${t.univLabel}`;
+            
+            const titleEl = document.getElementById('header-title');
+            titleEl.className = `text-4xl md:text-5xl font-black tracking-tight mb-2 transition-colors duration-300 ${t.headerTitleText}`;
+            
+            const gradientSpan = document.getElementById('header-title-gradient');
+            gradientSpan.className = `text-transparent bg-clip-text bg-gradient-to-r ${t.headerTitleGradient}`;
 
-    document.getElementById('header-subtitle').className = `text-lg flex items-center justify-center gap-2 transition-colors duration-300 ${t.headerSubtitle}`;
-    document.getElementById('header-logo-inner').className = `w-full h-full rounded-full flex items-center justify-center overflow-hidden transition-colors duration-300 ${t.logoInner}`;
+            document.getElementById('header-subtitle').className = `text-lg flex items-center justify-center gap-2 transition-colors duration-300 ${t.headerSubtitle}`;
+            document.getElementById('header-logo-inner').className = `w-full h-full rounded-full flex items-center justify-center overflow-hidden transition-colors duration-300 ${t.logoInner}`;
 
-    // Helper text
-    document.getElementById('tab-helper-text').className = `text-center text-xs uppercase ${t.subText} mb-6 font-bold tracking-wider flex items-center justify-center gap-2`;
+            // Helper text
+            document.getElementById('tab-helper-text').className = `text-center text-xs uppercase ${t.subText} mb-6 font-bold tracking-wider flex items-center justify-center gap-2`;
 
-    // Badges
-    document.getElementById('badge-1').className = `px-4 py-2 ${t.badge1} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
-    document.getElementById('badge-2').className = `px-4 py-2 ${t.badge2} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
-    document.getElementById('badge-3').className = `px-4 py-2 ${t.badge3} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
+            // Badges
+            document.getElementById('badge-1').className = `px-4 py-2 ${t.badge1} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
+            document.getElementById('badge-2').className = `px-4 py-2 ${t.badge2} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
+            document.getElementById('badge-3').className = `px-4 py-2 ${t.badge3} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
 
-    // Footer Elements & Theme Selector
-    document.getElementById('footer-text').className = `text-xs text-center ${t.footerText}`;
-    document.getElementById('theme-selector-label').className = `text-xs font-bold uppercase tracking-wider px-3 flex items-center gap-2 ${t.themeLabel}`;
+            // Footer Elements & Theme Selector
+            document.getElementById('footer-text').className = `text-xs text-center ${t.footerText}`;
+            document.getElementById('theme-selector-label').className = `text-xs font-bold uppercase tracking-wider px-3 flex items-center gap-2 ${t.themeLabel}`;
 
-    ['sapphire', 'light', 'emerald'].forEach(k => {
-        const btn = document.getElementById(`btn-${k}`);
-        if (btn) {
-            btn.className = `theme-btn px-4 py-1.5 rounded-xl text-xs transition-all flex items-center gap-2 cursor-pointer border ${k === key ? t.activeBtn : t.inactiveBtn}`;
+            ['sapphire', 'light', 'emerald'].forEach(k => {
+                const btn = document.getElementById(`btn-${k}`);
+                if (btn) {
+                    btn.className = `theme-btn px-4 py-1.5 rounded-xl text-xs transition-all flex items-center gap-2 cursor-pointer border ${k === key ? t.activeBtn : t.inactiveBtn}`;
+                }
+            });
+
+            renderApp();
         }
-    });
 
-    renderApp();
-}
         function renderApp() {
             renderNav();
             renderContent();
