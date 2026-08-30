@@ -1,492 +1,515 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="midnight">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College of IT Infographic - University of Babylon</title>
-    <!-- Tailwind CSS -->
+    <title>College of IT — University of Babylon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@0.400.0/dist/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; transition: background-color 0.4s ease, color 0.4s ease; }
-        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        /* -------------------------------------------------------------
+           THEME DEFINITIONS USING CSS CUSTOM PROPERTIES
+        ------------------------------------------------------------- */
+        :root[data-theme="midnight"] {
+            --bg-main: #090d16;
+            --bg-nav: rgba(15, 23, 42, 0.85);
+            --bg-surface: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(99, 102, 241, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-primary: #6366f1;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --accent-soft: rgba(99, 102, 241, 0.12);
+            --badge-bg: rgba(99, 102, 241, 0.1);
+            --badge-text: #818cf8;
+            --shadow-glow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+        }
+
+        :root[data-theme="light"] {
+            --bg-main: #f8fafc;
+            --bg-nav: rgba(255, 255, 255, 0.85);
+            --bg-surface: #ffffff;
+            --bg-card: #f1f5f9;
+            --bg-card-hover: #e2e8f0;
+            --border-color: #cbd5e1;
+            --border-accent: rgba(37, 99, 235, 0.3);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent-primary: #2563eb;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
+            --accent-soft: rgba(37, 99, 235, 0.08);
+            --badge-bg: rgba(37, 99, 235, 0.1);
+            --badge-text: #1d4ed8;
+            --shadow-glow: 0 10px 25px -5px rgba(37, 99, 235, 0.12);
+        }
+
+        :root[data-theme="emerald"] {
+            --bg-main: #04120f;
+            --bg-nav: rgba(6, 30, 25, 0.85);
+            --bg-surface: #0a2722;
+            --bg-card: #113a33;
+            --bg-card-hover: #184e45;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(16, 185, 129, 0.3);
+            --text-main: #f0fdf4;
+            --text-muted: #94a3b8;
+            --accent-primary: #10b981;
+            --accent-gradient: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            --accent-soft: rgba(16, 185, 129, 0.12);
+            --badge-bg: rgba(16, 185, 129, 0.12);
+            --badge-text: #34d399;
+            --shadow-glow: 0 10px 30px -10px rgba(16, 185, 129, 0.25);
+        }
+
+        :root[data-theme="amethyst"] {
+            --bg-main: #0f0a1c;
+            --bg-nav: rgba(24, 15, 43, 0.85);
+            --bg-surface: #1d1334;
+            --bg-card: #2c1d4d;
+            --bg-card-hover: #3d2a68;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(168, 85, 247, 0.3);
+            --text-main: #faf5ff;
+            --text-muted: #a78bfa;
+            --accent-primary: #a855f7;
+            --accent-gradient: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            --accent-soft: rgba(168, 85, 247, 0.15);
+            --badge-bg: rgba(168, 85, 247, 0.12);
+            --badge-text: #c084fc;
+            --shadow-glow: 0 10px 30px -10px rgba(168, 85, 247, 0.3);
+        }
+
+        :root[data-theme="amber"] {
+            --bg-main: #120d08;
+            --bg-nav: rgba(31, 20, 11, 0.85);
+            --bg-surface: #21160d;
+            --bg-card: #332316;
+            --bg-card-hover: #473220;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(245, 158, 11, 0.3);
+            --text-main: #fffbeb;
+            --text-muted: #d97706;
+            --accent-primary: #f59e0b;
+            --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+            --accent-soft: rgba(245, 158, 11, 0.12);
+            --badge-bg: rgba(245, 158, 11, 0.12);
+            --badge-text: #fbbf24;
+            --shadow-glow: 0 10px 30px -10px rgba(245, 158, 11, 0.25);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .bg-nav-glass {
+            background-color: var(--bg-nav);
+            backdrop-filter: blur(12px);
+        }
+
+        .bg-surface-theme { background-color: var(--bg-surface); }
+        .bg-card-theme { background-color: var(--bg-card); }
+        .border-theme { border-color: var(--border-color); }
+        .border-accent-theme { border-color: var(--border-accent); }
+        
+        .text-main-theme { color: var(--text-main); }
+        .text-muted-theme { color: var(--text-muted); }
+        
+        .accent-bg { background-color: var(--accent-primary); }
+        .accent-soft-bg { background-color: var(--accent-soft); }
+        .accent-gradient-bg { background: var(--accent-gradient); }
+        .accent-text { color: var(--accent-primary); }
+        .badge-bg { background-color: var(--badge-bg); }
+        .badge-text { color: var(--badge-text); }
+        .shadow-glow { box-shadow: var(--shadow-glow); }
+
+        .fade-in {
+            animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Light Theme Color Override Rule */
-        body.theme-light .text-slate-200,
-        body.theme-light .text-slate-300,
-        body.theme-light .text-slate-400 {
-            --tw-text-opacity: 1;
-            color: rgb(30 58 97) !important;
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-card-hover); border-radius: 9999px; }
     </style>
 </head>
-<body id="app-body" class="min-h-screen bg-slate-950 text-slate-100 overflow-x-hidden relative flex flex-col">
+<body class="min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- Background Animation Canvas -->
-    <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
-
-    <!-- Top Navigation Bar -->
-    <nav id="app-nav" class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-indigo-500/30 px-4 md:px-8 py-3 shadow-2xl transition-colors duration-300">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
-            <a href="https://itbabylon.org" class="flex items-center gap-2.5 group">
-                <div id="nav-brand-icon" class="p-2 rounded-xl bg-indigo-500/20 border border-indigo-400/40 text-indigo-300 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M2 12h20"/></svg>
+    <nav class="sticky top-0 z-50 bg-nav-glass border-b border-theme transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            
+            <a href="https://itbabylon.org" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl accent-gradient-bg p-[1px] shadow-glow flex items-center justify-center">
+                    <div class="w-full h-full bg-surface-theme rounded-[11px] flex items-center justify-center">
+                        <i data-lucide="cpu" class="w-5 h-5 accent-text"></i>
+                    </div>
                 </div>
-                <span id="nav-brand-title" class="font-bold text-sm md:text-base tracking-tight text-white transition-colors">
-                    IT Babylon <span id="nav-brand-sub" class="text-xs text-indigo-400 font-normal transition-colors">Portal</span>
-                </span>
+                <div>
+                    <span class="font-extrabold text-sm tracking-tight block text-main-theme group-hover:opacity-80 transition-opacity">IT Babylon</span>
+                    <span class="text-[11px] text-muted-theme block -mt-1 font-medium">University of Babylon</span>
+                </div>
             </a>
 
-            <!-- Dynamic Navigation Links -->
-            <div class="flex items-center gap-2">
-                <a id="nav-link-1" href="https://itbabylon.org" class="px-3 py-1.5 rounded-lg text-xs transition-all">Home</a>
-                <a id="nav-link-2" href="https://moodle.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg text-xs transition-all">Moodle</a>
-                <a id="nav-link-3" href="https://booking.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg text-xs transition-all">Booking</a>
-                <a id="nav-link-4" href="https://rasana.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg text-xs transition-all">Rasana</a>
-                <a id="nav-link-5" href="https://cert.itbabylon.org/" target="_blank" class="px-3 py-1.5 rounded-lg text-xs transition-all">Certificates</a>
-                <a id="nav-link-6" href="https://invig.itbabylon.org/" target="_blank" class="px-3 py-1.5 rounded-lg text-xs transition-all">Invigilation</a>
-
+            <div class="hidden md:flex items-center gap-1.5 text-xs font-semibold">
+                <a href="https://itbabylon.org" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Home</a>
+                <a href="https://moodle.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all flex items-center gap-1">
+                    <i data-lucide="book-open" class="w-3.5 h-3.5 accent-text"></i> Moodle
+                </a>
+                <a href="https://booking.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all flex items-center gap-1">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5 accent-text"></i> Booking
+                </a>
+                <a href="https://rasana.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Rasana</a>
+                <a href="https://cert.itbabylon.org/" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Certificates</a>
+                <a href="https://invig.itbabylon.org/" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Invigilation</a>
             </div>
-            
+
+            <div class="flex items-center gap-1 p-1 rounded-xl bg-surface-theme border border-theme">
+                <button onclick="setTheme('midnight')" id="btn-midnight" title="Midnight Slate" class="w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center">
+                    <span class="w-3.5 h-3.5 rounded-full bg-indigo-500"></span>
+                </button>
+                <button onclick="setTheme('light')" id="btn-light" title="Clean Light" class="w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center">
+                    <span class="w-3.5 h-3.5 rounded-full bg-blue-500"></span>
+                </button>
+                <button onclick="setTheme('emerald')" id="btn-emerald" title="Deep Emerald" class="w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center">
+                    <span class="w-3.5 h-3.5 rounded-full bg-emerald-500"></span>
+                </button>
+                <button onclick="setTheme('amethyst')" id="btn-amethyst" title="Amethyst Purple" class="w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center">
+                    <span class="w-3.5 h-3.5 rounded-full bg-purple-500"></span>
+                </button>
+                <button onclick="setTheme('amber')" id="btn-amber" title="Carbon Amber" class="w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center">
+                    <span class="w-3.5 h-3.5 rounded-full bg-amber-500"></span>
+                </button>
+            </div>
+
         </div>
     </nav>
 
-    <!-- Header -->
-    <header id="app-header" class="relative z-10 p-6 md:p-10 text-center border-b border-indigo-500/20 bg-slate-900/60 backdrop-blur-md transition-colors duration-300">
-        <div class="flex flex-col items-center gap-3 mb-6">
-            <span id="header-univ-label" class="text-[11px] font-black uppercase tracking-widest transition-colors duration-300">University of Babylon</span>
-            <div id="header-logo-outer" class="w-20 h-20 bg-gradient-to-br from-indigo-500 via-indigo-700 to-blue-800 rounded-full p-[2px] shadow-lg">
-                <div id="header-logo-inner" class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center overflow-hidden border border-indigo-400/20 transition-colors duration-300">
-                    <img id="header-logo-icon" src="https://raw.githubusercontent.com/geoapi/babylon-it-infographic/refs/heads/main/download.jpg" alt="College Logo" class="w-full h-full object-cover rounded-full transition-opacity duration-300">
+    <header class="relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8 border-b border-theme bg-surface-theme">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-7 space-y-4 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold badge-bg badge-text border border-accent-theme">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                    Bologna Process Standardized Institution
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-main-theme">
+                    College of <span class="bg-clip-text text-transparent accent-gradient-bg">Information Technology</span>
+                </h1>
+
+                <p class="text-sm sm:text-base text-muted-theme max-w-2xl font-normal leading-relaxed">
+                    Driving innovation in information networks, enterprise software engineering, cyber defense, and cognitive AI systems at the University of Babylon.
+                </p>
+
+                <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-2 text-xs font-medium text-muted-theme">
+                    <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-4 h-4 accent-text"></i> Al Najaf St., Hillah, Babylon, Iraq</span>
                 </div>
             </div>
-        </div>
 
-        <h1 id="header-title" class="text-4xl md:text-5xl font-black tracking-tight mb-2 transition-colors duration-300">
-            College of <span id="header-title-gradient" class="text-transparent bg-clip-text bg-gradient-to-r">Information Technology</span>
-        </h1>
-        <p id="header-subtitle" class="text-lg flex items-center justify-center gap-2 font-black transition-colors duration-300">
-            📍 Al Najaf's St. ,Hillah, Babylon, Iraq
-        </p>
-        
-        <div class="flex flex-wrap justify-center gap-3 mt-6">
-            <div id="badge-1" class="px-4 py-2 rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors font-black">
-                🏆 Bologna Process Standardized
+            <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+                <div class="p-4 rounded-2xl bg-card-theme border border-theme shadow-sm hover:border-accent-theme transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-muted-theme uppercase">Departments</span>
+                        <i data-lucide="layers" class="w-4 h-4 accent-text"></i>
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-black text-main-theme mt-2">04</div>
+                    <p class="text-[11px] text-muted-theme mt-1">Specialized Academic Hubs</p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-card-theme border border-theme shadow-sm hover:border-accent-theme transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-muted-theme uppercase">Degrees</span>
+                        <i data-lucide="award" class="w-4 h-4 accent-text"></i>
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-black text-main-theme mt-2">B.Sc - Ph.D</div>
+                    <p class="text-[11px] text-muted-theme mt-1">Multi-Tier Accreditation</p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-card-theme border border-theme shadow-sm hover:border-accent-theme transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-muted-theme uppercase">Global Twinning</span>
+                        <i data-lucide="globe" class="w-4 h-4 accent-text"></i>
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-black text-main-theme mt-2">2+2 UK</div>
+                    <p class="text-[11px] text-muted-theme mt-1">Univ. of Northampton</p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-card-theme border border-theme shadow-sm hover:border-accent-theme transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-muted-theme uppercase">Tech Alliance</span>
+                        <i data-lucide="terminal" class="w-4 h-4 accent-text"></i>
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-black text-main-theme mt-2">Huawei / MS</div>
+                    <p class="text-[11px] text-muted-theme mt-1">Industry Certified Labs</p>
+                </div>
             </div>
-            <div id="badge-2" class="px-4 py-2 rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors font-black">
-                ⚡ Premier Tech Infrastructure
-            </div>
-            <div id="badge-3" class="px-4 py-2 rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors font-black">
-                💻 Moodle & Smart Classrooms
-            </div>
+
         </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="relative z-10 max-w-7xl mx-auto p-4 md:p-8 flex-grow">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full space-y-8">
         
-        <p id="tab-helper-text" class="text-center text-xs uppercase mb-6 font-bold tracking-wider flex items-center justify-center gap-2">
-            <span class="inline-block w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
-            Select a Department Hub to explore details
-        </p>
-
-        <!-- Department Buttons Grid -->
-        <div id="nav-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10"></div>
-
-        <!-- Main Content Display -->
-        <div id="content-container" class="bg-slate-900/70 border border-indigo-500/20 rounded-3xl p-6 md:p-10 backdrop-blur-xl shadow-2xl transition-all duration-300"></div>
-    </main>
-
-    <!-- Footer at the Bottom of the Page -->
-    <footer id="app-footer" class="relative z-10 border-t border-indigo-500/15 mt-16 bg-slate-950/90 py-8 px-4 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto flex flex-col items-center gap-6 text-center">
-            
-            <p id="footer-text" class="text-xs">
-                Interactive Departmental Infographic Directory • University of Babylon
-            </p>
-
-            <!-- THEME SELECTOR TOOLBAR -->
-            <div id="footer-theme-selector" class="flex flex-col sm:flex-row items-center gap-3 p-2 rounded-2xl bg-slate-900/90 border border-indigo-500/30 shadow-2xl transition-colors duration-300">
-                <span id="theme-selector-label" class="text-xs font-bold uppercase tracking-wider text-indigo-300 px-3 flex items-center gap-2">
-                    <i data-lucide="palette" class="w-4 h-4 text-amber-400"></i>
-                    Theme Selector:
-                </span>
-                
-                <div class="flex items-center gap-2">
-                    <button onclick="setTheme('sapphire')" id="btn-sapphire" class="theme-btn px-4 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border">
-                        <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
-                        Sapphire
-                    </button>
-                    
-                    <button onclick="setTheme('light')" id="btn-light" class="theme-btn px-4 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border">
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                        Light
-                    </button>
-                    
-                    <button onclick="setTheme('emerald')" id="btn-emerald" class="theme-btn px-4 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer border">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                        Emerald
-                    </button>
-                </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h2 class="text-lg font-bold text-main-theme">Departmental Directory</h2>
+                <p class="text-xs text-muted-theme">Select a department below to explore curriculum, research, and career paths.</p>
             </div>
 
+            <div class="relative min-w-[240px]">
+                <i data-lucide="search" class="w-4 h-4 text-muted-theme absolute left-3 top-1/2 -translate-y-1/2"></i>
+                <input type="text" id="search-input" onkeyup="filterDepartments()" placeholder="Filter subjects or skills..." 
+                       class="w-full pl-9 pr-4 py-2 rounded-xl bg-surface-theme border border-theme text-xs text-main-theme placeholder:text-muted-theme focus:outline-none focus:border-accent-theme transition-colors">
+            </div>
+        </div>
+
+        <div id="dept-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+
+        <div id="dept-detail-container" class="bg-surface-theme border border-theme rounded-3xl p-6 sm:p-8 lg:p-10 shadow-glow transition-all"></div>
+
+    </main>
+
+    <footer class="bg-surface-theme border-t border-theme py-8 px-4 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-theme text-center md:text-left">
+            <div>
+                <p class="font-bold text-main-theme">University of Babylon — College of Information Technology</p>
+                <p class="text-[11px] mt-0.5">Interactive Departmental Infographic Directory • All rights reserved.</p>
+            </div>
+            <div class="flex items-center gap-4 text-xs">
+                <a href="https://itbabylon.org" class="hover:text-main-theme transition-colors">Portal Home</a>
+                <a href="https://moodle.itbabylon.org" class="hover:text-main-theme transition-colors">Moodle LMS</a>
+                <a href="https://booking.itbabylon.org" class="hover:text-main-theme transition-colors">Booking</a>
+            </div>
         </div>
     </footer>
 
     <script>
-        const themes = {
-            sapphire: {
-                name: 'Midnight Sapphire',
-                body: 'bg-gradient-to-br from-slate-950 via-indigo-950/80 to-slate-900 text-slate-100',
-                nav: 'bg-slate-900/90 border-b border-indigo-500/30 shadow-2xl',
-                navBrandTitle: 'text-white',
-                navBrandSub: 'text-indigo-400',
-                navBrandIcon: 'bg-indigo-500/20 border-indigo-400/40 text-indigo-300',
-                navLink: 'text-slate-100 font-bold hover:text-white hover:bg-indigo-600/30 border border-transparent',
-                header: 'bg-slate-900/60 border-b border-indigo-500/20',
-                univLabel: 'text-indigo-400 font-bold',
-                headerTitleText: 'text-white',
-                headerTitleGradient: 'from-cyan-400 via-indigo-400 to-blue-500',
-                headerSubtitle: 'text-slate-300 font-medium',
-                logoInner: 'bg-slate-900 border-indigo-400/20',
-                card: 'bg-slate-900/80 border border-indigo-500/30 shadow-2xl text-slate-100',
-                badge1: 'bg-slate-900/80 border border-indigo-500/20 text-amber-300',
-                badge2: 'bg-slate-900/80 border border-indigo-500/20 text-emerald-300',
-                badge3: 'bg-slate-900/80 border border-indigo-500/20 text-cyan-300',
-                footer: 'bg-slate-950/90 border-t border-indigo-500/15',
-                footerText: 'text-slate-400',
-                themeLabel: 'text-indigo-300',
-                headingText: 'text-white',
-                bodyText: 'text-slate-300',
-                subText: 'text-indigo-300',
-                activeBtn: 'bg-indigo-600 text-white border-indigo-400 shadow-md ring-2 ring-indigo-400/40',
-                inactiveBtn: 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700',
-                particleDot: 'rgba(165, 180, 252, 0.3)',
-                particleLine: 'rgba(129, 140, 248, '
-            },
-            light: {
-                name: 'Modern Light',
-                body: 'bg-slate-100 text-[rgb(30_58_97)]',
-                nav: 'bg-white border-b-2 border-slate-300 shadow-md',
-                navBrandTitle: 'text-[rgb(30_58_97)] font-black',
-                navBrandSub: 'text-[rgb(30_58_97)] font-black',
-                navBrandIcon: 'bg-indigo-50 border-2 border-indigo-300 text-[rgb(30_58_97)]',
-                navLink: 'text-[rgb(30_58_97)] font-black hover:text-[rgb(20_40_70)] hover:bg-indigo-50 border-2 border-slate-300 shadow-sm bg-white',
-                header: 'bg-white border-b-2 border-slate-300 shadow-sm',
-                univLabel: 'text-[rgb(30_58_97)] font-black',
-                headerTitleText: 'text-[rgb(30_58_97)] font-black',
-                headerTitleGradient: 'from-[rgb(30_58_97)] via-indigo-900 to-slate-900',
-                headerSubtitle: 'text-[rgb(30_58_97)] font-black',
-                logoInner: 'bg-indigo-50 border-2 border-indigo-300',
-                card: 'bg-white border-2 border-slate-300 shadow-xl text-[rgb(30_58_97)]',
-                badge1: 'bg-amber-50 border-2 border-amber-400 text-[rgb(30_58_97)] font-black',
-                badge2: 'bg-emerald-50 border-2 border-emerald-400 text-[rgb(30_58_97)] font-black',
-                badge3: 'bg-cyan-50 border-2 border-cyan-400 text-[rgb(30_58_97)] font-black',
-                footer: 'bg-white border-t-2 border-slate-300',
-                footerText: 'text-[rgb(30_58_97)] font-black',
-                themeLabel: 'text-[rgb(30_58_97)] font-black',
-                headingText: 'text-[rgb(30_58_97)] font-black',
-                bodyText: 'text-[rgb(30_58_97)] font-black',
-                subText: 'text-[rgb(30_58_97)] font-black',
-                activeBtn: 'bg-[rgb(30_58_97)] text-white border-[rgb(20_40_70)] shadow-md ring-2 ring-indigo-600/40 font-black',
-                inactiveBtn: 'bg-slate-200 text-[rgb(30_58_97)] border-2 border-slate-400 hover:bg-slate-300 font-black',
-                particleDot: 'rgba(30, 58, 97, 0.35)',
-                particleLine: 'rgba(30, 58, 97, '
-            },
-            emerald: {
-                name: 'Deep Emerald',
-                body: 'bg-gradient-to-br from-slate-950 via-emerald-950/80 to-slate-900 text-slate-100',
-                nav: 'bg-slate-900/90 border-b border-emerald-500/30 shadow-2xl',
-                navBrandTitle: 'text-white',
-                navBrandSub: 'text-emerald-400',
-                navBrandIcon: 'bg-emerald-500/20 border-emerald-400/40 text-emerald-300',
-                navLink: 'text-slate-100 font-bold hover:text-white hover:bg-emerald-600/30 border border-transparent',
-                header: 'bg-slate-900/60 border-b border-emerald-500/20',
-                univLabel: 'text-emerald-400 font-bold',
-                headerTitleText: 'text-white',
-                headerTitleGradient: 'from-emerald-400 via-teal-300 to-cyan-400',
-                headerSubtitle: 'text-slate-300 font-medium',
-                logoInner: 'bg-slate-900 border-emerald-400/20',
-                card: 'bg-slate-900/80 border border-emerald-500/30 shadow-2xl text-slate-100',
-                badge1: 'bg-slate-900/80 border border-emerald-500/20 text-amber-300',
-                badge2: 'bg-slate-900/80 border border-emerald-500/20 text-emerald-300',
-                badge3: 'bg-slate-900/80 border border-emerald-500/20 text-cyan-300',
-                footer: 'bg-slate-950/90 border-t border-emerald-500/15',
-                footerText: 'text-slate-400',
-                themeLabel: 'text-emerald-300',
-                headingText: 'text-white',
-                bodyText: 'text-slate-300',
-                subText: 'text-emerald-300',
-                activeBtn: 'bg-emerald-600 text-white border-emerald-400 shadow-md ring-2 ring-emerald-400/40',
-                inactiveBtn: 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700',
-                particleDot: 'rgba(52, 211, 153, 0.3)',
-                particleLine: 'rgba(16, 185, 129, '
-            }
-        };
-
-        const data = {
+        const departmentsData = {
             network: {
-                id: 'network', title: 'Information Networks', tagline: 'Connecting Global Systems',
-                color: 'from-purple-500 to-pink-500', shadow: 'shadow-purple-500/25', borderColor: 'border-purple-500/50',
-                glow: 'shadow-[0_0_25px_rgba(168,85,247,0.3)]', icon: 'network',
-                degrees: ['B.Sc.', 'M.Sc.', 'Ph.D.'],
-                core: ['Network Management', 'Cloud Computing', 'SDN', 'Web Programming', 'Network Security'],
+                id: 'network',
+                title: 'Information Networks',
+                tagline: 'Cloud Architectures & Web Systems',
+                icon: 'network',
+                degrees: ['B.Sc. Degree', 'M.Sc. Program', 'Ph.D. Doctorate'],
+                core: ['Network Management', 'Cloud Infrastructure', 'Software-Defined Networks (SDN)', 'Web System Security'],
                 research: [
-                    { title: 'WSN & VANETs', desc: 'Clustering algorithms and intelligent transport.' },
-                    { title: 'Cybersecurity Threats', desc: 'Detecting DNS tunneling and intrusion mitigation.' },
-                    { title: 'AI for Sustainability', desc: 'Optimizing resources and emissions.' }
+                    { title: 'WSN & VANET Systems', desc: 'Clustering algorithms and intelligent transport protocol design.' },
+                    { title: 'DNS Security & Tunneling', desc: 'Real-time threat detection and DNS tunneling mitigation.' },
+                    { title: 'Sustainable Computing', desc: 'AI-driven resource optimization for lower-emission data centers.' }
                 ],
-                partners: ['🇬🇧 UON Twinning (2+2)', 'Huawei', 'Springer Academic'],
-                careers: ['Network & Web Engineer', 'Network Architect', 'Cloud Infrastructure Eng.']
+                partners: ['UON Twinning Program (2+2 UK)', 'Huawei ICT Academy', 'Springer Academic'],
+                careers: ['Network Engineer', 'Cloud Architect', 'Web Security Specialist']
             },
             software: {
-                id: 'software', title: 'Software Dept.', tagline: 'Architecting Digital Solutions',
-                color: 'from-blue-500 to-cyan-400', shadow: 'shadow-blue-500/25', borderColor: 'border-blue-500/50',
-                glow: 'shadow-[0_0_25px_rgba(59,130,246,0.3)]', icon: 'code-2',
-                degrees: ['B.Sc.', 'M.Sc.', 'Ph.D.'],
-                core: ['Artificial Intelligence', 'Deep Learning', 'System Automation', 'Medical Image Analysis'],
+                id: 'software',
+                title: 'Software Dept.',
+                tagline: 'Enterprise Architectures & AI',
+                icon: 'code-2',
+                degrees: ['B.Sc. Degree', 'M.Sc. Program', 'Ph.D. Doctorate'],
+                core: ['Artificial Intelligence', 'Deep Learning', 'System Automation', 'Medical Image Analytics'],
                 research: [
-                    { title: 'AI & Medical Imaging', desc: 'Cell representations and visual Q&A systems.' },
-                    { title: 'Remote Sensing', desc: 'Satellite imagery ML mapping.' }
+                    { title: 'AI & Medical Diagnostics', desc: 'Cellular representations and intelligent visual Q&A systems.' },
+                    { title: 'Remote Sensing', desc: 'Machine learning applied to satellite image mapping.' }
                 ],
-                partners: ['🇬🇧 UON Twinning (2+2)', 'Microsoft', 'Huawei'],
-                careers: ['Software Engineer', 'AI Specialist', 'Systems Analyst']
+                partners: ['UON Twinning Program (2+2 UK)', 'Microsoft Academic', 'Huawei Dev Lab'],
+                careers: ['Software Engineer', 'AI Solutions Developer', 'Systems Architect']
             },
             cyber: {
-                id: 'cyber', title: 'Cybersecurity Dept.', tagline: 'Defending the Digital Frontier',
-                color: 'from-red-500 to-orange-500', shadow: 'shadow-red-500/25', borderColor: 'border-red-500/50',
-                glow: 'shadow-[0_0_25px_rgba(239,68,68,0.3)]', icon: 'shield-alert',
-                degrees: ['B.Sc.', 'M.Sc.'],
-                core: ['Threat Analysis', 'Secure Programming', 'Digital Forensics', 'Risk Management'],
+                id: 'cyber',
+                title: 'Cybersecurity Dept.',
+                tagline: 'Digital Forensics & Defense',
+                icon: 'shield-alert',
+                degrees: ['B.Sc. Degree', 'M.Sc. Cybersecurity'],
+                core: ['Threat Analysis', 'Secure Coding', 'Digital Forensics', 'Risk Management'],
                 research: [
-                    { title: 'Intrusion Detection', desc: 'Active network cyber-defense systems.' },
-                    { title: 'Post-Quantum Crypto', desc: 'Advanced encryption modeling.' }
+                    { title: 'Intrusion Detection Systems', desc: 'Autonomous active network defense frameworks.' },
+                    { title: 'Post-Quantum Crypto', desc: 'Quantum-resistant encryption and hardware security.' }
                 ],
-                partners: ['Industry Standard Alliances', 'Global Coalitions'],
-                careers: ['Cybersecurity Analyst', 'Network Security Engineer']
+                partners: ['Global Security Coalitions', 'Industry Alliance Hubs'],
+                careers: ['Cybersecurity Analyst', 'Security Engineer', 'Penetration Tester']
             },
             ai: {
-                id: 'ai', title: 'Artificial Intelligence', tagline: 'Pioneering Cognitive Systems',
-                color: 'from-emerald-500 to-teal-400', shadow: 'shadow-emerald-500/25', borderColor: 'border-emerald-500/50',
-                glow: 'shadow-[0_0_25px_rgba(16,185,129,0.3)]', icon: 'brain-circuit',
-                degrees: ['B.Sc.'],
+                id: 'ai',
+                title: 'Artificial Intelligence',
+                tagline: 'Cognitive Computing & Robotics',
+                icon: 'brain-circuit',
+                degrees: ['B.Sc. Artificial Intelligence'],
                 core: ['Machine Learning', 'Computer Vision', 'Natural Language Processing', 'Generative AI'],
                 research: [
-                    { title: 'Cognitive Computing', desc: 'Simulating neural thought patterns.' },
-                    { title: 'Vision & Robotics', desc: 'Real-time spatial mapping.' }
+                    { title: 'Cognitive Neural Computing', desc: 'Simulating complex human-like thought patterns.' },
+                    { title: 'Spatial Robotics & Vision', desc: 'Real-time spatial mapping and autonomous navigation.' }
                 ],
-                partners: ['Global AI Research Labs', 'Huawei AI Academy'],
-                careers: ['Machine Learning Engineer', 'AI Research Scientist']
+                partners: ['Global AI Open Research', 'Huawei AI Innovation Lab'],
+                careers: ['Machine Learning Engineer', 'Computer Vision Scientist', 'AI Researcher']
             }
         };
 
-        let currentThemeKey = 'emerald';
-        let activeDept = data.network;
+        let activeTheme = 'midnight';
+        let activeDeptKey = 'network';
 
-        function setTheme(key) {
-            if (!themes[key]) return;
-            currentThemeKey = key;
-            const t = themes[key];
-
-            // Toggle CSS Class for global style overrides
-            document.body.classList.toggle('theme-light', key === 'light');
-
-            // Page Sections & Backgrounds
-            document.getElementById('app-body').className = `min-h-screen ${t.body} transition-colors duration-300 flex flex-col ${key === 'light' ? 'theme-light' : ''}`;
-            document.getElementById('app-nav').className = `sticky top-0 z-50 ${t.nav} px-4 md:px-8 py-3 transition-colors duration-300`;
-            document.getElementById('app-header').className = `relative z-10 p-6 md:p-10 text-center ${t.header} backdrop-blur-md transition-colors duration-300`;
-            document.getElementById('app-footer').className = `relative z-10 border-t ${t.footer} mt-16 transition-colors duration-300 py-8 px-4`;
-
-            // Brand Styling
-            document.getElementById('nav-brand-icon').className = `p-2 rounded-xl border transition-colors ${t.navBrandIcon}`;
-            document.getElementById('nav-brand-title').className = `font-bold text-sm md:text-base tracking-tight transition-colors ${t.navBrandTitle}`;
-            document.getElementById('nav-brand-sub').className = `text-xs transition-colors ${t.navBrandSub}`;
-
-            // Top Nav Links
-            ['nav-link-1', 'nav-link-2', 'nav-link-3', 'nav-link-4', 'nav-link-5','nav-link-6'].forEach(id => {
-                const link = document.getElementById(id);
-                if (link) link.className = `px-3 py-1.5 rounded-lg text-xs transition-all ${t.navLink}`;
-            });
-
-            // Header Elements Styling
-            document.getElementById('header-univ-label').className = `text-[11px] font-black uppercase tracking-widest transition-colors duration-300 ${t.univLabel}`;
+        function setTheme(themeKey) {
+            activeTheme = themeKey;
+            document.documentElement.setAttribute('data-theme', themeKey);
             
-            const titleEl = document.getElementById('header-title');
-            titleEl.className = `text-4xl md:text-5xl font-black tracking-tight mb-2 transition-colors duration-300 ${t.headerTitleText}`;
-            
-            const gradientSpan = document.getElementById('header-title-gradient');
-            gradientSpan.className = `text-transparent bg-clip-text bg-gradient-to-r ${t.headerTitleGradient}`;
-
-            document.getElementById('header-subtitle').className = `text-lg flex items-center justify-center gap-2 transition-colors duration-300 ${t.headerSubtitle}`;
-            document.getElementById('header-logo-inner').className = `w-full h-full rounded-full flex items-center justify-center overflow-hidden transition-colors duration-300 ${t.logoInner}`;
-
-            // Helper text
-            document.getElementById('tab-helper-text').className = `text-center text-xs uppercase ${t.subText} mb-6 font-bold tracking-wider flex items-center justify-center gap-2`;
-
-            // Badges
-            document.getElementById('badge-1').className = `px-4 py-2 ${t.badge1} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
-            document.getElementById('badge-2').className = `px-4 py-2 ${t.badge2} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
-            document.getElementById('badge-3').className = `px-4 py-2 ${t.badge3} rounded-full flex items-center gap-2 text-xs md:text-sm shadow-sm transition-colors`;
-
-            // Footer Elements & Theme Selector
-            document.getElementById('footer-text').className = `text-xs text-center ${t.footerText}`;
-            document.getElementById('theme-selector-label').className = `text-xs font-bold uppercase tracking-wider px-3 flex items-center gap-2 ${t.themeLabel}`;
-
-            ['sapphire', 'light', 'emerald'].forEach(k => {
-                const btn = document.getElementById(`btn-${k}`);
+            ['midnight', 'light', 'emerald', 'amethyst', 'amber'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
                 if (btn) {
-                    btn.className = `theme-btn px-4 py-1.5 rounded-xl text-xs transition-all flex items-center gap-2 cursor-pointer border ${k === key ? t.activeBtn : t.inactiveBtn}`;
+                    if (t === themeKey) {
+                        btn.className = 'w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center ring-2 ring-indigo-500/80 bg-card-theme';
+                    } else {
+                        btn.className = 'w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center opacity-60 hover:opacity-100';
+                    }
                 }
             });
+        }
 
+        function setActiveDept(id) {
+            activeDeptKey = id;
             renderApp();
         }
 
-        function renderApp() {
-            renderNav();
-            renderContent();
-            if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+        function filterDepartments() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const cards = document.querySelectorAll('.dept-card');
+
+            Object.values(departmentsData).forEach(dept => {
+                const cardEl = document.getElementById(`card-${dept.id}`);
+                if (!cardEl) return;
+
+                const match = dept.title.toLowerCase().includes(query) ||
+                              dept.tagline.toLowerCase().includes(query) ||
+                              dept.core.some(c => c.toLowerCase().includes(query));
+
+                cardEl.style.display = match ? 'block' : 'none';
+            });
         }
 
-        function renderNav() {
-            const container = document.getElementById('nav-container');
-            const isLight = currentThemeKey === 'light';
-
-            container.innerHTML = Object.values(data).map(dept => {
-                const isActive = activeDept.id === dept.id;
-                const bgClass = isLight 
-                    ? (isActive ? 'bg-white border-2 border-[rgb(30_58_97)] ring-2 ring-indigo-500/40 shadow-md' : 'bg-white border-2 border-slate-300 hover:bg-slate-50')
-                    : (isActive ? `${dept.borderColor} bg-slate-900/90 ${dept.glow} ring-2 ring-indigo-400/20` : 'border-indigo-500/15 bg-slate-900/40 hover:bg-slate-900/70');
+        function renderGrid() {
+            const container = document.getElementById('dept-grid');
+            container.innerHTML = Object.values(departmentsData).map(dept => {
+                const isActive = dept.id === activeDeptKey;
+                const borderClass = isActive ? 'border-accent-theme shadow-glow ring-2 ring-indigo-500/20' : 'border-theme hover:border-accent-theme';
+                const bgClass = isActive ? 'bg-surface-theme' : 'bg-card-theme';
 
                 return `
-                    <button onclick="setActive('${dept.id}')" class="relative group p-5 rounded-2xl text-left backdrop-blur-sm cursor-pointer ${bgClass} ${isActive ? 'scale-[1.02]' : ''}">
-                        <div class="flex items-center gap-4">
-                            <div class="p-3.5 rounded-xl bg-gradient-to-br ${dept.color} ${dept.shadow}">
-                                <i data-lucide="${dept.icon}" class="w-6 h-6 text-white"></i>
+                    <div id="card-${dept.id}" onclick="setActiveDept('${dept.id}')" 
+                         class="dept-card p-5 rounded-2xl border ${borderClass} ${bgClass} cursor-pointer transition-all hover:scale-[1.01] group">
+                        <div class="flex items-center gap-3.5 mb-3">
+                            <div class="p-3 rounded-xl accent-soft-bg flex items-center justify-center">
+                                <i data-lucide="${dept.icon}" class="w-5 h-5 accent-text"></i>
                             </div>
                             <div>
-                                <h2 class="text-md md:text-lg font-black ${isLight ? 'text-[rgb(30_58_97)]' : 'text-white'}">${dept.title}</h2>
-                                <p class="text-xs ${isLight ? 'text-[rgb(30_58_97)] font-bold' : 'text-slate-300'}">${dept.tagline}</p>
+                                <h3 class="font-extrabold text-sm text-main-theme group-hover:text-indigo-400 transition-colors">${dept.title}</h3>
+                                <p class="text-xs text-muted-theme line-clamp-1">${dept.tagline}</p>
                             </div>
                         </div>
-                    </button>
+                        <div class="flex flex-wrap gap-1 mt-2">
+                            ${dept.degrees.map(d => `<span class="px-2 py-0.5 rounded text-[10px] font-bold badge-bg badge-text">${d}</span>`).join('')}
+                        </div>
+                    </div>
                 `;
             }).join('');
         }
 
-        function renderContent() {
-            const container = document.getElementById('content-container');
-            const d = activeDept;
-            const t = themes[currentThemeKey];
-            const isLight = currentThemeKey === 'light';
-
-            container.className = `${t.card} rounded-3xl p-6 md:p-10 backdrop-blur-xl transition-all duration-300`;
-            const cardBg = isLight ? 'bg-slate-50/90 border-2 border-slate-300' : 'bg-slate-900/60 border-indigo-500/20';
+        function renderDetail() {
+            const container = document.getElementById('dept-detail-container');
+            const d = departmentsData[activeDeptKey];
 
             container.innerHTML = `
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 fade-in">
-                    <div>
-                        <h3 class="text-lg font-black mb-4 ${t.headingText} border-b pb-2 ${isLight ? 'border-slate-300' : 'border-indigo-500/20'}">🎓 Academics</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            ${d.degrees.map(deg => `<span class="px-3 py-1 rounded-lg ${isLight ? 'bg-indigo-100 text-[rgb(30_58_97)] border-2 border-indigo-300 font-black' : 'bg-indigo-500/20 text-indigo-200'} text-xs font-bold">${deg}</span>`).join('')}
+                <div class="fade-in space-y-8">
+                    
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-theme">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider accent-text">Selected Academic Hub</span>
+                            <h2 class="text-2xl sm:text-3xl font-black text-main-theme mt-1">${d.title}</h2>
+                            <p class="text-xs text-muted-theme mt-0.5">${d.tagline}</p>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            ${d.core.map(skill => `<span class="px-3 py-1.5 ${cardBg} rounded-lg text-xs ${t.bodyText}">${skill}</span>`).join('')}
+                            ${d.degrees.map(deg => `<span class="px-3 py-1 rounded-lg bg-card-theme border border-theme text-xs font-bold text-main-theme">${deg}</span>`).join('')}
                         </div>
                     </div>
 
-                    <div class="lg:border-l lg:border-r ${isLight ? 'border-slate-300' : 'border-indigo-500/20'} lg:px-6">
-                        <h3 class="text-lg font-black mb-4 ${t.headingText} border-b pb-2 ${isLight ? 'border-slate-300' : 'border-indigo-500/20'}">🔬 Research Hubs</h3>
-                        <div class="space-y-3">
-                            ${d.research.map(r => `
-                                <div class="p-3.5 ${cardBg} rounded-xl">
-                                    <h4 class="font-black text-sm ${t.headingText}">${r.title}</h4>
-                                    <p class="text-xs ${t.bodyText} mt-1">${r.desc}</p>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        
+                        <div class="space-y-4">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-muted-theme flex items-center gap-2">
+                                <i data-lucide="book-open" class="w-4 h-4 accent-text"></i> Core Academic Focus
+                            </h3>
+                            <div class="space-y-2">
+                                ${d.core.map(skill => `
+                                    <div class="p-3.5 rounded-xl bg-card-theme border border-theme text-xs font-semibold text-main-theme flex items-center gap-2.5">
+                                        <div class="w-2 h-2 rounded-full accent-bg"></div>
+                                        ${skill}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-muted-theme flex items-center gap-2">
+                                <i data-lucide="microscope" class="w-4 h-4 accent-text"></i> Active Research Hubs
+                            </h3>
+                            <div class="space-y-3">
+                                ${d.research.map(r => `
+                                    <div class="p-4 rounded-xl bg-card-theme border border-theme space-y-1">
+                                        <h4 class="font-bold text-xs text-main-theme">${r.title}</h4>
+                                        <p class="text-xs text-muted-theme leading-relaxed">${r.desc}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-muted-theme flex items-center gap-2">
+                                <i data-lucide="briefcase" class="w-4 h-4 accent-text"></i> Career & Partnerships
+                            </h3>
+                            
+                            <div class="space-y-3">
+                                <div class="p-4 rounded-xl bg-card-theme border border-theme">
+                                    <span class="text-[11px] font-bold text-muted-theme uppercase block mb-2">Industry Partners</span>
+                                    <ul class="space-y-1.5 text-xs font-medium text-main-theme">
+                                        ${d.partners.map(p => `<li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 accent-text"></i> ${p}</li>`).join('')}
+                                    </ul>
                                 </div>
-                            `).join('')}
-                        </div>
-                    </div>
 
-                    <div>
-                        <h3 class="text-lg font-black mb-4 ${t.headingText} border-b pb-2 ${isLight ? 'border-slate-300' : 'border-indigo-500/20'}">💼 Career & Alliances</h3>
-                        <ul class="space-y-2 mb-4">
-                            ${d.partners.map(p => `<li class="text-xs ${t.bodyText}">• ${p}</li>`).join('')}
-                        </ul>
-                        <div class="space-y-2">
-                            ${d.careers.map(c => `<div class="px-3.5 py-2 ${cardBg} rounded-xl text-xs font-black ${t.headingText}">${c}</div>`).join('')}
+                                <div class="p-4 rounded-xl bg-card-theme border border-theme">
+                                    <span class="text-[11px] font-bold text-muted-theme uppercase block mb-2">Target Career Outcomes</span>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        ${d.careers.map(c => `<span class="px-2.5 py-1 rounded-lg bg-surface-theme border border-theme text-xs font-semibold text-main-theme">${c}</span>`).join('')}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             `;
         }
 
-        window.setActive = function(id) {
-            activeDept = data[id];
-            renderApp();
-        };
-
-        // Canvas Particle Network
-        const canvas = document.getElementById('bgCanvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function initCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            particles = [];
-            for (let i = 0; i < 45; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.4,
-                    vy: (Math.random() - 0.5) * 0.4,
-                    radius: Math.random() * 1.5 + 0.5
-                });
+        function renderApp() {
+            renderGrid();
+            renderDetail();
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
             }
         }
 
-        function animateCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const currentTheme = themes[currentThemeKey];
-            
-            particles.forEach(p => {
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = currentTheme.particleDot;
-                ctx.fill();
-            });
-
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 130) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `${currentTheme.particleLine}${(0.12 - dist / 1000)})`;
-                        ctx.lineWidth = 0.8;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateCanvas);
-        }
-
-        window.addEventListener('resize', initCanvas);
         document.addEventListener("DOMContentLoaded", () => {
-            initCanvas();
-            animateCanvas();
-            setTheme('emerald');
+            setTheme('midnight');
+            renderApp();
         });
     </script>
 </body>
