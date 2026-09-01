@@ -164,8 +164,11 @@
                 </div>
             </a>
 
-            <div class="hidden md:flex items-center gap-1.5 text-xs font-semibold">
+            <div class="hidden lg:flex items-center gap-1.5 text-xs font-semibold">
                 <a href="https://itbabylon.org" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Home</a>
+                <a href="https://jiinc.uobabylon.edu.iq/" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all flex items-center gap-1">
+                    <i data-lucide="newspaper" class="w-3.5 h-3.5 accent-text"></i> JIINC Journal
+                </a>
                 <a href="https://moodle.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all flex items-center gap-1">
                     <i data-lucide="book-open" class="w-3.5 h-3.5 accent-text"></i> Moodle
                 </a>
@@ -288,8 +291,9 @@
                 <p class="font-bold text-main-theme">University of Babylon — College of Information Technology</p>
                 <p class="text-[11px] mt-0.5">Interactive Departmental Infographic Directory • All rights reserved.</p>
             </div>
-            <div class="flex items-center gap-4 text-xs">
+            <div class="flex flex-wrap items-center gap-4 text-xs justify-center md:justify-start">
                 <a href="https://itbabylon.org" class="hover:text-main-theme transition-colors">Portal Home</a>
+                <a href="https://jiinc.uobabylon.edu.iq/" target="_blank" class="hover:text-main-theme transition-colors">JIINC Journal</a>
                 <a href="https://moodle.itbabylon.org" class="hover:text-main-theme transition-colors">Moodle LMS</a>
                 <a href="https://booking.itbabylon.org" class="hover:text-main-theme transition-colors">Booking</a>
             </div>
@@ -383,7 +387,6 @@
 
         function filterDepartments() {
             const query = document.getElementById('search-input').value.toLowerCase();
-            const cards = document.querySelectorAll('.dept-card');
 
             Object.values(departmentsData).forEach(dept => {
                 const cardEl = document.getElementById(`card-${dept.id}`);
