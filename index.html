@@ -141,7 +141,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-main); }
         ::-webkit-scrollbar-thumb { background: var(--bg-card-hover); border-radius: 9999px; }
@@ -152,15 +151,13 @@
     <nav class="sticky top-0 z-50 bg-nav-glass border-b border-theme transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
             
- <a href="https://itbabylon.org" class="flex items-center gap-3 group">
-    <!-- REPLACED ICON WITH AN IMAGE -->
-    <img src="https://github.com/geoapi/babylon-it-infographic/blob/main/download.jpg?raw=true" alt="College Logo" class="w-10 h-10 object-contain rounded-xl">
-    
-    <div>
-        <span class="font-extrabold text-sm tracking-tight block text-main-theme group-hover:opacity-80 transition-opacity">IT Babylon</span>
-        <span class="text-[11px] text-muted-theme block -mt-1 font-medium">University of Babylon</span>
-    </div>
-</a>
+            <a href="https://itbabylon.org" class="flex items-center gap-3 group">
+                <img src="https://github.com/geoapi/babylon-it-infographic/blob/main/download.jpg?raw=true" alt="College Logo" class="w-10 h-10 object-contain rounded-xl">
+                <div>
+                    <span class="font-extrabold text-sm tracking-tight block text-main-theme group-hover:opacity-80 transition-opacity">IT Babylon</span>
+                    <span class="text-[11px] text-muted-theme block -mt-1 font-medium">University of Babylon</span>
+                </div>
+            </a>
 
             <div class="hidden lg:flex items-center gap-1.5 text-xs font-semibold">
                 <a href="https://itbabylon.org" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Home</a>
@@ -174,8 +171,11 @@
                     <i data-lucide="calendar" class="w-3.5 h-3.5 accent-text"></i> Booking
                 </a>
                 <a href="https://rasana.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Rasana</a>
-                <a href="https://cert.itbabylon.org/" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Certificates</a>
                 <a href="https://exammon.itbabylon.org/" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Exams Monitoring System</a>
+                <!-- Added Web Services as the last item -->
+                <a href="services.html" class="px-3 py-1.5 rounded-lg bg-surface-theme border border-accent-theme text-main-theme hover:bg-card-theme transition-all shadow-glow flex items-center gap-1">
+                    <i data-lucide="layout-grid" class="w-3.5 h-3.5 accent-text"></i> Web Services
+                </a>
             </div>
 
             <div class="flex items-center gap-1 p-1 rounded-xl bg-surface-theme border border-theme">
@@ -291,9 +291,7 @@
             </div>
             <div class="flex flex-wrap items-center gap-4 text-xs justify-center md:justify-start">
                 <a href="https://itbabylon.org" class="hover:text-main-theme transition-colors">Portal Home</a>
-                <a href="https://jiinc.uobabylon.edu.iq/" target="_blank" class="hover:text-main-theme transition-colors">JIINC Journal</a>
-                <a href="https://moodle.itbabylon.org" class="hover:text-main-theme transition-colors">Moodle LMS</a>
-                <a href="https://booking.itbabylon.org" class="hover:text-main-theme transition-colors">Booking</a>
+                <a href="services.html" class="hover:text-main-theme transition-colors">Web Services</a>
             </div>
         </div>
     </footer>
