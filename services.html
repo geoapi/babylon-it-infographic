@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Services — College of IT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* -------------------------------------------------------------
+           THEME DEFINITIONS USING CSS CUSTOM PROPERTIES
+        ------------------------------------------------------------- */
+        :root[data-theme="midnight"] {
+            --bg-main: #090d16;
+            --bg-nav: rgba(15, 23, 42, 0.85);
+            --bg-surface: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(99, 102, 241, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-primary: #6366f1;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --accent-soft: rgba(99, 102, 241, 0.12);
+            --badge-bg: rgba(99, 102, 241, 0.1);
+            --badge-text: #818cf8;
+            --shadow-glow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+        }
+
+        :root[data-theme="light"] {
+            --bg-main: #f8fafc;
+            --bg-nav: rgba(255, 255, 255, 0.85);
+            --bg-surface: #ffffff;
+            --bg-card: #f1f5f9;
+            --bg-card-hover: #e2e8f0;
+            --border-color: #cbd5e1;
+            --border-accent: rgba(37, 99, 235, 0.3);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent-primary: #2563eb;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
+            --accent-soft: rgba(37, 99, 235, 0.08);
+            --badge-bg: rgba(37, 99, 235, 0.1);
+            --badge-text: #1d4ed8;
+            --shadow-glow: 0 10px 25px -5px rgba(37, 99, 235, 0.12);
+        }
+
+        :root[data-theme="emerald"] {
+            --bg-main: #04120f;
+            --bg-nav: rgba(6, 30, 25, 0.85);
+            --bg-surface: #0a2722;
+            --bg-card: #113a33;
+            --bg-card-hover: #184e45;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(16, 185, 129, 0.3);
+            --text-main: #f0fdf4;
+            --text-muted: #94a3b8;
+            --accent-primary: #10b981;
+            --accent-gradient: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            --accent-soft: rgba(16, 185, 129, 0.12);
+            --badge-bg: rgba(16, 185, 129, 0.12);
+            --badge-text: #34d399;
+            --shadow-glow: 0 10px 30px -10px rgba(16, 185, 129, 0.25);
+        }
+
+        :root[data-theme="amethyst"] {
+            --bg-main: #0f0a1c;
+            --bg-nav: rgba(24, 15, 43, 0.85);
+            --bg-surface: #1d1334;
+            --bg-card: #2c1d4d;
+            --bg-card-hover: #3d2a68;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(168, 85, 247, 0.3);
+            --text-main: #faf5ff;
+            --text-muted: #a78bfa;
+            --accent-primary: #a855f7;
+            --accent-gradient: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            --accent-soft: rgba(168, 85, 247, 0.15);
+            --badge-bg: rgba(168, 85, 247, 0.12);
+            --badge-text: #c084fc;
+            --shadow-glow: 0 10px 30px -10px rgba(168, 85, 247, 0.3);
+        }
+
+        :root[data-theme="amber"] {
+            --bg-main: #120d08;
+            --bg-nav: rgba(31, 20, 11, 0.85);
+            --bg-surface: #21160d;
+            --bg-card: #332316;
+            --bg-card-hover: #473220;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(245, 158, 11, 0.3);
+            --text-main: #fffbeb;
+            --text-muted: #d97706;
+            --accent-primary: #f59e0b;
+            --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+            --accent-soft: rgba(245, 158, 11, 0.12);
+            --badge-bg: rgba(245, 158, 11, 0.12);
+            --badge-text: #fbbf24;
+            --shadow-glow: 0 10px 30px -10px rgba(245, 158, 11, 0.25);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .bg-nav-glass {
+            background-color: var(--bg-nav);
+            backdrop-filter: blur(12px);
+        }
+
+        .bg-surface-theme { background-color: var(--bg-surface); }
+        .bg-card-theme { background-color: var(--bg-card); }
+        .border-theme { border-color: var(--border-color); }
+        .border-accent-theme { border-color: var(--border-accent); }
+        
+        .text-main-theme { color: var(--text-main); }
+        .text-muted-theme { color: var(--text-muted); }
+        
+        .accent-bg { background-color: var(--accent-primary); }
+        .accent-soft-bg { background-color: var(--accent-soft); }
+        .accent-gradient-bg { background: var(--accent-gradient); }
+        .accent-text { color: var(--accent-primary); }
+        .badge-bg { background-color: var(--badge-bg); }
+        .badge-text { color: var(--badge-text); }
+        .shadow-glow { box-shadow: var(--shadow-glow); }
+
+        .fade-in {
+            animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-card-hover); border-radius: 9999px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+    <nav class="sticky top-0 z-50 bg-nav-glass border-b border-theme transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            
+            <a href="https://itbabylon.org" class="flex items-center gap-3 group">
+                <img src="https://github.com/geoapi/babylon-it-infographic/blob/main/download.jpg?raw=true" alt="College Logo" class="w-10 h-10 object-contain rounded-xl">
+                <div>
+                    <span class="font-extrabold text-sm tracking-tight block text-main-theme group-hover:opacity-80 transition-opacity">IT Babylon</span>
+                    <span class="text-[11px] text-muted-theme block -mt-1 font-medium">University of Babylon</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-1.5 text-xs font-semibold">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Home</a>
+                <a href="https://jiinc.uobabylon.edu.iq/" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all flex items-center gap-1">
+                    <i data-lucide="newspaper" class="w-3.5 h-3.5 accent-text"></i> JIINC Journal
+                </a>
+                <a href="https://moodle.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all flex items-center gap-1">
+                    <i data-lucide="book-open" class="w-3.5 h-3.5 accent-text"></i> Moodle
+                </a>
+                <a href="https://booking.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all flex items-center gap-1">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5 accent-text"></i> Booking
+                </a>
+                <a href="https://rasana.itbabylon.org" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Rasana</a>
+                <a href="https://exammon.itbabylon.org/" target="_blank" class="px-3 py-1.5 rounded-lg bg-card-theme border border-theme text-main-theme hover:border-accent-theme transition-all">Exams Monitoring System</a>
+                <!-- Active Web Services item -->
+                <a href="#" class="px-3 py-1.5 rounded-lg bg-surface-theme border border-accent-theme text-main-theme transition-all shadow-glow flex items-center gap-1">
+                    <i data-lucide="layout-grid" class="w-3.5 h-3.5 accent-text"></i> Web Services
+                </a>
+            </div>
+
+            <div class="flex items-center gap-1 p-1 rounded-xl bg-surface-theme border border-theme">
+                <button onclick="setTheme('midnight')" id="btn-midnight" title="Midnight Slate" class="w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center">
+                    <span class="w-3.5 h-3.5 rounded-full bg-indigo-500"></span>
+                </button>
+                <button onclick="setTheme('light')" id="btn-light" title="Clean Light" class="w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center">
+                    <span class="w-3.5 h-3.5 rounded-full bg-blue-500"></span>
+                </button>
+                <button onclick="setTheme('emerald')" id="btn-emerald" title="Deep Emerald" class="w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center">
+                    <span class="w-3.5 h-3.5 rounded-full bg-emerald-500"></span>
+                </button>
+                <button onclick="setTheme('amethyst')" id="btn-amethyst" title="Amethyst Purple" class="w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center">
+                    <span class="w-3.5 h-3.5 rounded-full bg-purple-500"></span>
+                </button>
+                <button onclick="setTheme('amber')" id="btn-amber" title="Carbon Amber" class="w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center">
+                    <span class="w-3.5 h-3.5 rounded-full bg-amber-500"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8 border-b border-theme bg-surface-theme">
+        <div class="max-w-7xl mx-auto text-center space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold badge-bg badge-text border border-accent-theme">
+                <i data-lucide="server" class="w-3.5 h-3.5"></i>
+                Integrated Digital Infrastructure
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-main-theme">
+                Centralized <span class="bg-clip-text text-transparent accent-gradient-bg">Web Services</span>
+            </h1>
+            
+            <p class="text-sm sm:text-base text-muted-theme max-w-2xl mx-auto font-normal leading-relaxed">
+                Access all essential academic systems, learning management platforms, tracking services, and institutional resources from one directory.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full space-y-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h2 class="text-lg font-bold text-main-theme">Services Directory</h2>
+                <p class="text-xs text-muted-theme">Find the academic or administrative tool you need.</p>
+            </div>
+
+            <div class="relative min-w-[240px] w-full sm:w-auto">
+                <i data-lucide="search" class="w-4 h-4 text-muted-theme absolute left-3 top-1/2 -translate-y-1/2"></i>
+                <input type="text" id="search-services" onkeyup="filterServices()" placeholder="Search services..." 
+                       class="w-full pl-9 pr-4 py-2 rounded-xl bg-surface-theme border border-theme text-xs text-main-theme placeholder:text-muted-theme focus:outline-none focus:border-accent-theme transition-colors">
+            </div>
+        </div>
+
+        <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Services dynamically populated here -->
+        </div>
+
+    </main>
+
+    <footer class="bg-surface-theme border-t border-theme py-8 px-4 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-theme text-center md:text-left">
+            <div>
+                <p class="font-bold text-main-theme">University of Babylon — College of Information Technology</p>
+                <p class="text-[11px] mt-0.5">Centralized Web Services Directory • All rights reserved.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-4 text-xs justify-center md:justify-start">
+                <a href="index.html" class="hover:text-main-theme transition-colors">Portal Home</a>
+                <a href="#" class="hover:text-main-theme transition-colors">Web Services</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const servicesData = [
+            { 
+                id: 'jiinc', 
+                title: 'JIINC Journal', 
+                desc: 'Journal of Information, Intelligence and Network Computing for premier academic publishing.', 
+                url: 'https://jiinc.uobabylon.edu.iq/', 
+                icon: 'newspaper' 
+            },
+            { 
+                id: 'moodle', 
+                title: 'Moodle LMS', 
+                desc: 'The centralized Learning Management System for coursework, assignments, and lectures.', 
+                url: 'https://moodle.itbabylon.org', 
+                icon: 'book-open' 
+            },
+            { 
+                id: 'booking', 
+                title: 'Booking System', 
+                desc: 'Reserve academic halls, specialized labs, and technological resources across the IT college.', 
+                url: 'https://booking.itbabylon.org', 
+                icon: 'calendar' 
+            },
+            { 
+                id: 'rasana', 
+                title: 'Rasana Platform', 
+                desc: 'Institutional academic tracking, roster system, and integrated scientific evaluation.', 
+                url: 'https://rasana.itbabylon.org', 
+                icon: 'file-check-2' 
+            },
+            { 
+                id: 'exammon', 
+                title: 'Exams Monitoring', 
+                desc: 'Comprehensive oversight system to monitor, control, and review academic examinations.', 
+                url: 'https://exammon.itbabylon.org/', 
+                icon: 'monitor-check' 
+            },
+            { 
+                id: 'gradtrack', 
+                title: 'Graduates Tracking System', 
+                desc: 'Stay connected with alumni. Platform for career tracking, networking, and university engagement.', 
+                url: 'https://gradtrack.itbabylon.org/', 
+                icon: 'graduation-cap' 
+            }
+        ];
+
+        let activeTheme = 'light';
+
+        function setTheme(themeKey) {
+            activeTheme = themeKey;
+            document.documentElement.setAttribute('data-theme', themeKey);
+            
+            ['midnight', 'light', 'emerald', 'amethyst', 'amber'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (btn) {
+                    if (t === themeKey) {
+                        btn.className = 'w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center ring-2 ring-indigo-500/80 bg-card-theme';
+                    } else {
+                        btn.className = 'w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center opacity-60 hover:opacity-100';
+                    }
+                }
+            });
+        }
+
+        function filterServices() {
+            const query = document.getElementById('search-services').value.toLowerCase();
+
+            servicesData.forEach(service => {
+                const cardEl = document.getElementById(`service-${service.id}`);
+                if (!cardEl) return;
+
+                const match = service.title.toLowerCase().includes(query) || 
+                              service.desc.toLowerCase().includes(query);
+
+                cardEl.style.display = match ? 'flex' : 'none';
+            });
+        }
+
+        function renderServices() {
+            const container = document.getElementById('services-grid');
+            container.innerHTML = servicesData.map(service => `
+                <div id="service-${service.id}" class="fade-in flex flex-col p-6 rounded-2xl bg-surface-theme border border-theme hover:border-accent-theme shadow-sm hover:shadow-glow transition-all group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3.5 rounded-xl accent-soft-bg flex items-center justify-center">
+                            <i data-lucide="${service.icon}" class="w-6 h-6 accent-text"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-main-theme group-hover:text-indigo-500 transition-colors">${service.title}</h3>
+                        </div>
+                    </div>
+                    <p class="text-sm text-muted-theme mb-6 flex-grow leading-relaxed">${service.desc}</p>
+                    <a href="${service.url}" target="_blank" class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-card-theme border border-theme text-main-theme text-xs font-bold hover:bg-accent-soft-bg hover:border-accent-theme hover:text-accent-primary transition-all">
+                        Open Service
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            `).join('');
+            
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTheme('light');
+            renderServices();
+        });
+    </script>
+</body>
+</html>
