@@ -251,6 +251,14 @@
 
     <script>
         const servicesData = [
+            {
+                id: 'dfms',
+                title: 'Document Flow Management System',
+                desc: 'One institution. One trusted record. Every document accounted for. The college’s official platform for managing incoming and outgoing correspondence, coordinating internal document distribution, and maintaining a centralized, searchable electronic archive.',
+                url: 'https://dfms.itbabylon.org/',
+                icon: 'files',
+                buttonLabel: 'Access Service'
+            },
             { 
                 id: 'jiinc', 
                 title: 'JIINC Journal', 
@@ -383,7 +391,7 @@
                     </div>
                     <p class="text-sm text-muted-theme mb-6 flex-grow leading-relaxed">${service.desc}</p>
                     <a href="${service.url}" target="_blank" class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-card-theme border border-theme text-main-theme text-xs font-bold hover:bg-accent-soft-bg hover:border-accent-theme hover:text-accent-primary transition-all">
-                        Open Service
+                        ${service.buttonLabel || 'Open Service'}
                         <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
                     </a>
                 </div>
