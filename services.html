@@ -342,6 +342,13 @@
                 desc: 'Administrative system to manage, track, and review employee attendance and timesheets.',
                 url: 'https://attend.itbabylon.org',
                 icon: 'user-check'
+            },
+            {
+                id: 'cfms',
+                title: 'College Financial Management System',
+                desc: 'Manage student tuition fees, financial records, payment tracking, and official electronic receipts.',
+                url: 'https://cfms.itbabylon.org',
+                icon: 'receipt'
             }
         ];
 
@@ -352,60 +359,4 @@
             document.documentElement.setAttribute('data-theme', themeKey);
             
             ['midnight', 'light', 'emerald', 'amethyst', 'amber'].forEach(t => {
-                const btn = document.getElementById(`btn-${t}`);
-                if (btn) {
-                    if (t === themeKey) {
-                        btn.className = 'w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center ring-2 ring-indigo-500/80 bg-card-theme';
-                    } else {
-                        btn.className = 'w-7 h-7 rounded-lg text-xs font-bold transition-all flex items-center justify-center opacity-60 hover:opacity-100';
-                    }
-                }
-            });
-        }
-
-        function filterServices() {
-            const query = document.getElementById('search-services').value.toLowerCase();
-
-            servicesData.forEach(service => {
-                const cardEl = document.getElementById(`service-${service.id}`);
-                if (!cardEl) return;
-
-                const match = service.title.toLowerCase().includes(query) || 
-                              service.desc.toLowerCase().includes(query);
-
-                cardEl.style.display = match ? 'flex' : 'none';
-            });
-        }
-
-        function renderServices() {
-            const container = document.getElementById('services-grid');
-            container.innerHTML = servicesData.map(service => `
-                <div id="service-${service.id}" class="fade-in flex flex-col p-6 rounded-2xl bg-surface-theme border border-theme hover:border-accent-theme shadow-sm hover:shadow-glow transition-all group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="p-3.5 rounded-xl accent-soft-bg flex items-center justify-center">
-                            <i data-lucide="${service.icon}" class="w-6 h-6 accent-text"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-base text-main-theme group-hover:text-indigo-500 transition-colors">${service.title}</h3>
-                        </div>
-                    </div>
-                    <p class="text-sm text-muted-theme mb-6 flex-grow leading-relaxed">${service.desc}</p>
-                    <a href="${service.url}" target="_blank" class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-card-theme border border-theme text-main-theme text-xs font-bold hover:bg-accent-soft-bg hover:border-accent-theme hover:text-accent-primary transition-all">
-                        ${service.buttonLabel || 'Open Service'}
-                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                    </a>
-                </div>
-            `).join('');
-            
-            if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                lucide.createIcons();
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            setTheme('light');
-            renderServices();
-        });
-    </script>
-</body>
-</html>
+                const btn =
